@@ -57,7 +57,7 @@ public class ServletLogin extends HttpServlet {
 		}
 		
 		if(eliminar != null) {
-			
+			eliminarUsuario(request,response);
 		}
 	}
 
@@ -120,6 +120,24 @@ public class ServletLogin extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			if(respuesta == 200) {
 				writer.println("Registro Actualizado!");
+			} else {
+				writer.println("Error "+respuesta);
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
+		int cedula = Integer.parseInt(request.getParameter("cedula"));
+		
+		int respuesta=0;
+		try {
+			respuesta = TestJSONUsuarios.deleteJSON(cedula);
+			PrintWriter writer = response.getWriter();
+			if(respuesta == 200) {
+				writer.println("Registro Eliminado!");
 			} else {
 				writer.println("Error "+respuesta);
 			}
