@@ -53,7 +53,11 @@ public class ServletLogin extends HttpServlet {
 		}
 		
 		if(listar != null) {
-			listarUsuario(request,response);
+			/* Para listar todos los usuarios
+			 *
+			*/
+			//listarUsuario(request,response);
+			buscarUsuario(request,response);
 		}
 		
 		if(eliminar != null) {
@@ -69,6 +73,9 @@ public class ServletLogin extends HttpServlet {
 		doGet(request, response);
 	}
 
+	//Agregar
+	//----------------------------------
+	
 	public void agregarUsuario(HttpServletRequest request, HttpServletResponse response) {
 		Usuario usuario = new Usuario();
 		//Capturamos los datos y los enviamos al objeto usuario
@@ -93,6 +100,26 @@ public class ServletLogin extends HttpServlet {
 		}
 	}
 	
+	//Buscar por id
+	//----------------------------------
+	public void buscarUsuario(HttpServletRequest request, HttpServletResponse response) {
+		int cedula = Integer.parseInt(request.getParameter("cedula"));
+		try {
+			UsuarioDTO usuario = TestJSONUsuarios.getJSONId(cedula);
+			//Le indicamos a que pagina se redigira
+			String pagina ="/resultado.jsp";
+			//Enviamos un atributo "user" para que reciba el objeto usuario
+			request.setAttribute("user", usuario);
+			//Esto es un disparador que nos envia a la pagina que indicamos antes
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+			dispatcher.forward(request, response);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//Buscar todos los usuarios
+	//----------------------------------
 	public void listarUsuario(HttpServletRequest request, HttpServletResponse response){
 		try {
 			ArrayList<UsuarioDTO> lista = TestJSONUsuarios.getJSON();
@@ -105,6 +132,8 @@ public class ServletLogin extends HttpServlet {
 		}
 	}
 	
+	//Actualizar
+	//----------------------------------
 	public void actualizarUsuario(HttpServletRequest request, HttpServletResponse response) {
 		Usuario usuario = new Usuario();
 		int cedula = Integer.parseInt(request.getParameter("cedula"));
@@ -129,6 +158,8 @@ public class ServletLogin extends HttpServlet {
 		}
 	}
 	
+	//Eliminar
+	//----------------------------------
 	public void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
 		int cedula = Integer.parseInt(request.getParameter("cedula"));
 		

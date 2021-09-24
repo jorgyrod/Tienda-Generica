@@ -21,8 +21,10 @@
 			<td><label>Usuario</label></td>
 		</tr>
 		<%
-			ArrayList<UsuarioDTO> lista = (ArrayList<UsuarioDTO>) request.getAttribute("lista");
-			for (UsuarioDTO usuario : lista){
+			/*
+				Recibimos el atributo "user" que enviamos en el Servlet
+			*/
+			UsuarioDTO usuario = (UsuarioDTO) request.getAttribute("user");
 		%>
 			<tr>
 				<td><%=usuario.getCedula()%></td>
@@ -31,7 +33,7 @@
 				<td><%=usuario.getUsername()%></td>
 			</tr>
 			<%
-			}
+			//}
 			%>
 	</table>
 </body>

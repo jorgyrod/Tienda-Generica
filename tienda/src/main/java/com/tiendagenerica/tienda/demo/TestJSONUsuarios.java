@@ -23,6 +23,49 @@ public class TestJSONUsuarios {
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
 	
+	//Buscar usuario por cedula
+	//---------------------------------------
+	
+	public static UsuarioDTO getJSONId(int cedula) throws IOException, ParseException{
+		url = new URL(sitio+"usuarios/buscar/"+cedula);
+		HttpURLConnection http = (HttpURLConnection)url.openConnection();
+		http.setRequestMethod("GET");
+		http.setRequestProperty("Accept", "application/json");
+		InputStream respuesta = http.getInputStream();
+		byte[] inp = respuesta.readAllBytes();
+		//Esto nos convertira los datos a string
+		String json = "";
+		for (int i = 0; i<inp.length ; i++) {
+			json += (char)inp[i];
+		}
+		UsuarioDTO usuario = new UsuarioDTO();
+		//al usuario que creamos le enviamos el string para que lo convierta en JSON
+		usuario = parsingUsuarioId(json);
+		http.disconnect();
+		return usuario;
+	}
+	
+	public static UsuarioDTO parsingUsuarioId(String json) throws ParseException {
+		//Creamos un convertidor JSON
+		JSONParser jsonParser = new JSONParser();
+		
+		//En un objeto json guardamos el string que recibimos y lo convertimos a json
+		JSONObject innerObj = (JSONObject) jsonParser.parse(json);
+		//Creamos un nuevo objeto dto y le enviamos los datos que obtuvimos del 
+		//parametro String json que recibimos
+		UsuarioDTO usuario = new UsuarioDTO();
+	 
+		usuario.setCedula(Integer.parseInt(innerObj.get("cedula").toString()));
+		usuario.setNombre(innerObj.get("nombre").toString());
+		usuario.setEmail(innerObj.get("email").toString());
+		usuario.setUsername(innerObj.get("username").toString());
+
+		//IMPORTANTE: no enviamos la contraseña ya que es un dato vulnerable
+
+		//Retornamos el usuario
+		return usuario;
+	}
+	
 	// Listar Usuarios
 	//---------------------------------------
 	/*
