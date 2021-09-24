@@ -109,4 +109,54 @@ public class TestJSONUsuarios {
 		http.disconnect();
 		return respuesta;
 	}
+	
+	// Actualizar Usuario
+	//---------------------------------------
+	
+	public static int putJSON(Usuario usuario, int cedula) throws IOException {
+		
+		url = new URL(sitio+"usuarios/actualizar/"+cedula);
+		HttpURLConnection http;
+		http = (HttpURLConnection)url.openConnection();
+		try {
+			http.setRequestMethod("PUT");
+		} catch (ProtocolException e) {
+			e.printStackTrace();
+		}
+		http.setDoOutput(true);
+		http.setRequestProperty("Accept", "application/json");
+		http.setRequestProperty("Content-Type", "application/json");
+		String data = "{"
+		+ "\"nombre\": \""+usuario.getNombre()
+		+"\",\"email\": \""+usuario.getEmail()
+		+"\",\"username\":\""+usuario.getUsername()
+		+"\",\"password\":\""+usuario.getPassword()
+		+ "\"}";
+		byte[] out = data.getBytes(StandardCharsets.UTF_8);
+		OutputStream stream = http.getOutputStream();
+		stream.write(out);
+		int respuesta = http.getResponseCode();
+		http.disconnect();
+		return respuesta;
+	}
+	
+	// Eliminar Usuario
+	//---------------------------------------
+	
+	public static int deleteJSON(int cedula) throws IOException{
+		url = new URL(sitio+"usuarios/eliminar/"+cedula);
+		HttpURLConnection http;
+		http = (HttpURLConnection)url.openConnection();
+		try {
+			http.setRequestMethod("DELETE");
+		} catch (ProtocolException e) {
+			e.printStackTrace();
+		}
+		http.setDoOutput(true);
+		http.setRequestProperty("Accept", "application/json");
+		http.setRequestProperty("Content-Type", "application/json");
+		int respuesta = http.getResponseCode();
+		http.disconnect();
+		return respuesta;
+	}
 }

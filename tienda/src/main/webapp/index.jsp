@@ -65,9 +65,9 @@
             </div>
             <div class="form-buttons">
                 <input type="submit" class="form-button-consultar" value="Crear" name="Agregar">
-                <input type="submit" class="form-button-actualizar" value="Actualizar">
+                <input type="submit" class="form-button-actualizar" value="Actualizar" name="Actualizar">
                 <input type="submit" class="form-button-buscar" value="Buscar" name="Listar">
-                <input type="submit" class="form-button-eliminar" value="Eliminar">
+                <input type="submit" class="form-button-eliminar" value="Eliminar" name="Eliminar">
             </div>
         </form>
     </div>

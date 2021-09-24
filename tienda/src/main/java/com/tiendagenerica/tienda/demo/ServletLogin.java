@@ -39,6 +39,8 @@ public class ServletLogin extends HttpServlet {
 		
 		String agregar = request.getParameter("Agregar");
 		String listar = request.getParameter("Listar");
+		String actualizar = request.getParameter("Actualizar");
+		String eliminar = request.getParameter("Eliminar");
 		
 		//Validamos que boton fue precionado...
 		
@@ -46,8 +48,16 @@ public class ServletLogin extends HttpServlet {
 			agregarUsuario(request,response);
 		}
 		
+		if(actualizar != null) {
+			actualizarUsuario(request,response);
+		}
+		
 		if(listar != null) {
 			listarUsuario(request,response);
+		}
+		
+		if(eliminar != null) {
+			
 		}
 	}
 
@@ -91,6 +101,30 @@ public class ServletLogin extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
 			dispatcher.forward(request, response);
 		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void actualizarUsuario(HttpServletRequest request, HttpServletResponse response) {
+		Usuario usuario = new Usuario();
+		int cedula = Integer.parseInt(request.getParameter("cedula"));
+		//Capturamos los datos y los enviamos al objeto usuario
+		usuario.setNombre(request.getParameter("nombre"));
+		usuario.setEmail(request.getParameter("email"));
+		usuario.setUsername(request.getParameter("usuario"));
+		usuario.setPassword(request.getParameter("password"));
+		
+		int respuesta=0;
+		try {
+			respuesta = TestJSONUsuarios.putJSON(usuario,cedula);
+			PrintWriter writer = response.getWriter();
+			if(respuesta == 200) {
+				writer.println("Registro Actualizado!");
+			} else {
+				writer.println("Error "+respuesta);
+			}
+			writer.close();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
