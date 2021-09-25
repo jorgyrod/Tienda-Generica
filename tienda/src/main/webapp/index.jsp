@@ -41,7 +41,7 @@
     </nav>
 
     <div class="form-container">
-        <form method="GET" action="./ServletLogin" class="form">
+        <form method="POST" action="./ServletLogin" class="form">
             <div class="ingresoDatos">
                 <div class="datos-container">
                     <div class="datosform">
@@ -59,7 +59,7 @@
                         <input type="text" class="form-input" placeholder="Usuario" name="usuario">
                     </div>
                     <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Contraseña" name="password">
+                        <input type="password" class="form-input" placeholder="Contraseña" name="password">
                     </div>
                 </div>
             </div>
@@ -69,7 +69,11 @@
                 <input type="submit" class="form-button-buscar" value="Buscar" name="Listar">
                 <input type="submit" class="form-button-eliminar" value="Eliminar" name="Eliminar">
             </div>
+            <div class="div-parrafo">
+        
+            </div>
         </form>
     </div>
+    <script src="JavaScript/validacion.js"></script>
 </body>
 </html>

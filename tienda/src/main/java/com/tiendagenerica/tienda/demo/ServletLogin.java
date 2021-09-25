@@ -35,13 +35,22 @@ public class ServletLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		String agregar = request.getParameter("Agregar");
 		String listar = request.getParameter("Listar");
 		String actualizar = request.getParameter("Actualizar");
 		String eliminar = request.getParameter("Eliminar");
-		
+
 		//Validamos que boton fue precionado...
 		
 		if(agregar != null) {
@@ -65,18 +74,10 @@ public class ServletLogin extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 	//Agregar
 	//----------------------------------
 	
-	public void agregarUsuario(HttpServletRequest request, HttpServletResponse response) {
+	public void agregarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		Usuario usuario = new Usuario();
 		//Capturamos los datos y los enviamos al objeto usuario
 		usuario.setCedula(Integer.parseInt(request.getParameter("cedula")));
@@ -84,17 +85,18 @@ public class ServletLogin extends HttpServlet {
 		usuario.setEmail(request.getParameter("email"));
 		usuario.setUsername(request.getParameter("usuario"));
 		usuario.setPassword(request.getParameter("password"));
-		
 		int respuesta=0;
 		try {
 			respuesta = TestJSONUsuarios.postJSON(usuario);
-			PrintWriter writer = response.getWriter();
+			//PrintWriter writer = response.getWriter();
 			if(respuesta == 200) {
-				writer.println("Registro Agregado!");
+				//writer.println("Registro Agregado!");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			} else {
-				writer.println("Error "+respuesta);
+				//writer.println("Error "+respuesta);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
-			writer.close();
+			//writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
