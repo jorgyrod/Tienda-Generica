@@ -56,7 +56,7 @@ public class ClienteImplementacionService implements IClientesServicios{
 		this.clienteDAO.save(clienteUpdate);
 	}
 
-	//Actualizar Cliente
+	//Eliminar Cliente
 	//-----------------------------------
 	
 	@Override
