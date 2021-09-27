@@ -212,7 +212,7 @@ public class ServletLogin extends HttpServlet {
 	
 	//Actualizar
 	//----------------------------------
-	public void actualizarUsuario(HttpServletRequest request, HttpServletResponse response) {
+	public void actualizarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Usuario usuario = new Usuario();
 		int cedula = Integer.parseInt(request.getParameter("cedula"));
 		//Capturamos los datos y los enviamos al objeto usuario
@@ -231,12 +231,14 @@ public class ServletLogin extends HttpServlet {
 				getServletContext().setAttribute("mensaje", mensaje);
 				getServletContext().setAttribute("clase", clase);
 				response.sendRedirect("/tienda/index.jsp");
-			} else {
-				response.sendRedirect("/tienda/index.jsp");
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			mensaje = "Usuario Inexistente";
+			clase = "parrafo-red";
+			getServletContext().setAttribute("mensaje", mensaje);
+			getServletContext().setAttribute("clase", clase);
+			response.sendRedirect("/tienda/index.jsp");
 		}
 	}
 	
@@ -249,7 +251,6 @@ public class ServletLogin extends HttpServlet {
 		int respuesta=0;
 		try {
 			respuesta = TestJSONUsuarios.deleteJSON(cedula);
-			PrintWriter writer = response.getWriter();
 			if(respuesta == 200) {
 				mensaje = "Usuario Eliminado Correctamente!";
 				clase = "parrafo-green";
@@ -259,7 +260,6 @@ public class ServletLogin extends HttpServlet {
 			} else {
 				response.sendRedirect("/tienda/index.jsp");
 			}
-			writer.close();
 		} catch (IOException e) {
 			getServletContext().setAttribute("mensaje", mensaje);
 			getServletContext().setAttribute("clase", clase);

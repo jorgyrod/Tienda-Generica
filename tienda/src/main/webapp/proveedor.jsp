@@ -33,7 +33,7 @@
         <ul class="nav__ul">
             <li class="nav__li"><a href="#"><i class="fas fa-users"></i>Usuarios</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-cart-arrow-down"></i>Clientes</a></li>
-            <li class="nav__li"><a href="proveedor.jsp"><i class="fas fa-shopping-basket"></i>Proveedores</a></li>
+            <li class="nav__li"><a href="#"><i class="fas fa-shopping-basket"></i>Proveedores</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-gifts"></i>Productos</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-coins"></i>Ventas</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-list-alt"></i>Reportes</a></li>
@@ -41,25 +41,25 @@
     </nav>
 
     <div class="form-container">
-        <form method="POST" action="./ServletLogin" class="form">
+        <form method="POST" action="./ProveedorServlet" class="form">
             <div class="ingresoDatos">
                 <div class="datos-container">
                     <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Cedula" name="cedula">
+                        <input type="text" class="form-input" placeholder="Nit" name="nit">
                     </div>
                     <div class="datosform">
                         <input type="text" class="form-input" placeholder="Nombre Completo" name="nombre">
                     </div>
                     <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Correo" name="email">
+                        <input type="text" class="form-input" placeholder="Direccion" name="direccion">
                     </div>
                 </div>
                 <div class="datos-container2">
                     <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Usuario" name="usuario">
+                        <input type="text" class="form-input" placeholder="Telefono" name="telefono">
                     </div>
                     <div class="datosform">
-                        <input type="password" class="form-input" placeholder="Contraseña" name="password">
+                        <input type="text" class="form-input" placeholder="Ciudad" name="ciudad">
                     </div>
                 </div>
             </div>
@@ -74,6 +74,5 @@
             </div>
         </form>
     </div>
-    
 </body>
 </html>

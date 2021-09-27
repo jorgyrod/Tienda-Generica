@@ -67,7 +67,7 @@ h2{
 
 .nav{
     min-width: 200px;
-    max-width: 90%;
+    max-width: 95%;
     height: 60px;
     background-color: red;
     margin: auto;
@@ -88,6 +88,7 @@ h2{
     margin-left: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     font-size: 20px;
 }
@@ -127,7 +128,7 @@ h2{
     width: 700px;
     justify-content: center;
     background-color: rgb(219, 218, 218);
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 20px;
     border-radius: 5px;
 }
@@ -136,7 +137,7 @@ h2{
     height: 350px;
 }
 
-.div-parrafo{
+.div-parrafo, .form-input {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 100;
     font-size: 18px;
@@ -168,9 +169,6 @@ h2{
 
 .form-input{
     padding-left: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 100;
-    font-size: 18px;
     color: #838383;
     box-shadow: 3px 4px rgb(112, 112, 112);
     
@@ -256,7 +254,7 @@ input{
                 inset -4px -4px 8px #7b1200;
 }
 
-/*Responsive*/
+/*Responsive  max-widht 380px*/
 /*--------------------------------*/
 @media screen and (max-width:380px){
 
@@ -298,6 +296,12 @@ input{
     /* FORM
     -----------------------------------
     */
+    .form-container{
+        margin-top: 20px;
+        width: 300px;
+        height: 460px;
+    }
+
     .datos-container2{
         margin-left: 0;
     }
@@ -305,16 +309,16 @@ input{
         display: flex;
         align-content: center;
         flex-wrap: wrap;
-        width: 250px;
+        width: 320px;
     }
 
     .datos-container, .datos-container2 {
         display: inline-block;
-        width: 250px;
+        width: 300px;
     }
 
     .datosform input{
-        width: 240px;
+        width: 290px;
     }
 
     input::placeholder{
@@ -339,9 +343,276 @@ input{
         margin: 8px auto;
         width: 220px;
     }
+
+    p{
+        width: 100px;
+    }
+
+}
+
+/*Responsive  max-widht 380px*/
+/*--------------------------------*/
+@media screen and (max-width:380px){
+
+    /* HEADER
+    -----------------------------------
+    */
+    h2{
+        display: none;
+    }
+
+    .header__li__salir{
+        width: 45px;
+    }
+
+    .header__li__salir i{
+        align-self: center;
+        margin: auto;
+    }
+
+    /* NAV
+    -----------------------------------
+    */
+
+    .nav{
+        width: 220px;
+        min-height: 310px;
+        margin-top: 8px;
+        margin-left: 68px;
+        flex-grow: 1;
+        
+    }
+    
+    
+    .nav__ul{
+        margin-top: 4px;
+        margin-left: 14px;
+    }
+
+    /* FORM
+    -----------------------------------
+    */
     .form-container{
         margin-top: 20px;
+        width: 300px;
         height: 460px;
+    }
+
+    .datos-container2{
+        margin-left: 0;
+    }
+    .ingresoDatos{
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        width: 320px;
+    }
+
+    .datos-container, .datos-container2 {
+        display: inline-block;
+        width: 300px;
+    }
+
+    .datosform input{
+        width: 290px;
+    }
+
+    input::placeholder{
+        font-size: 16px;
+    }
+    
+    /*
+        Botones Form
+        ---------------------------
+    */
+
+    .form input[type="submit"] {
+        margin: 3px;
+    }
+
+    /*
+        Div Form Parrafo
+        ---------------------------
+    */
+    .div-parrafo{
+        font-size: 16px;
+        margin: 8px auto;
+        width: 220px;
+    }
+
+    p{
+        width: 100px;
+    }
+    
+}
+
+/*Responsive*/
+/*--------------------------------*/
+@media only screen and (min-width: 381px) and (max-width: 540px){
+
+    /* HEADER
+    -----------------------------------
+    */
+    
+    /* NAV
+    -----------------------------------
+    */
+
+    .nav{
+        width: 510px;
+        min-width: 400px;
+        min-height: 170px;
+        margin-top: 8px;
+        margin-left: 20px;
+        flex-grow: 1;
+    }
+    
+    
+    .nav__ul{
+        margin-top: 4px;
+        margin-left: 14px;
+    }
+
+    /* FORM
+    -----------------------------------
+    */
+    .form-container{
+        margin-top: 20px;
+        width: 480px;
+        height: 460px;
+    }
+
+    .datos-container2{
+        margin-left: 0;
+    }
+    .ingresoDatos{
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        width: 470px;
+    }
+
+    .datos-container, .datos-container2 {
+        display: inline-block;
+        width: 400px;
+    }
+
+    .datosform input{
+        width: 400px;
+    }
+
+    input::placeholder{
+        font-size: 16px;
+    }
+    
+    /*
+        Botones Form
+        ---------------------------
+    */
+
+    .form input[type="submit"] {
+        margin: 4px;
+    }
+
+    /*
+        Div Form Parrafo
+        ---------------------------
+    */
+    .div-parrafo{
+        font-size: 16px;
+        margin: 8px auto;
+        width: 400px;
+    }
+
+    p{
+        width: 100px;
+    }
+    
+
+}
+
+/*Responsive*/
+/*--------------------------------*/
+@media only screen and (max-width: 1024px){
+
+    /* HEADER
+    -----------------------------------
+    */
+    
+    /* NAV
+    -----------------------------------
+    */
+
+    .nav{
+        width: 950px;
+        min-height: 120px;
+        margin-top: 8px;
+        margin-left: 40px;
+        flex-grow: 1;
+    }
+    
+    
+    .nav__ul{
+        margin-top: 4px;
+        margin-left: 14px;
+    }
+
+    /* FORM
+    -----------------------------------
+    */
+    .form-container{
+        margin-top: 20px;
+        width: 950px;
+        height: 310px;
+    }
+
+    .datos-container2{
+        margin-left: 0;
+    }
+    .ingresoDatos{
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        width: 930px;
+    }
+
+    .datos-container, .datos-container2 {
+        display: inline-block;
+        width: 400px;
+    }
+
+    .datos-container2{
+        margin-left: 50px;
+    }
+    .datosform input{
+        width: 400px;
+    }
+
+    input::placeholder{
+        font-size: 16px;
+    }
+    
+    /*
+        Botones Form
+        ---------------------------
+    */
+
+    .form input[type="submit"] {
+        margin: 4px;
+    }
+
+    /*
+        Div Form Parrafo
+        ---------------------------
+    */
+    .div-parrafo{
+        font-size: 16px;
+        margin: 8px auto;
+        width: 600px;
+    }
+
+    p{
+        width: 500px;
     }
     
 }

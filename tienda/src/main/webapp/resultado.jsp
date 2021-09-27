@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Consulta de Usuario</title>
 </head>
 <body>
 	<p>LISTADO DE USUARIOS</p>
