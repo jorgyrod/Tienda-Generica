@@ -22,6 +22,7 @@ public class TestJSONUsuarios {
 
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
+
 	
 	//Buscar usuario por cedula
 	//---------------------------------------

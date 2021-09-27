@@ -3,6 +3,7 @@ package com.tiendagenerica.tienda.demo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.parser.ParseException;
 
 import com.tiendagenerica.tienda.DTO.UsuarioDTO;
 import com.tiendagenerica.tienda.Entidades.Usuario;
@@ -46,6 +48,9 @@ public class ServletLogin extends HttpServlet {
 		doGet(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		String mensaje = "Faltan datos de Usuario";
+		String clase = "parrafo-red";
+		
 		String agregar = request.getParameter("Agregar");
 		String listar = request.getParameter("Listar");
 		String actualizar = request.getParameter("Actualizar");
@@ -54,11 +59,25 @@ public class ServletLogin extends HttpServlet {
 		//Validamos que boton fue precionado...
 		
 		if(agregar != null) {
-			agregarUsuario(request,response);
+			if(validar(request,response)) {
+				getServletContext().setAttribute("mensaje", mensaje);
+				getServletContext().setAttribute("clase", clase);
+				response.sendRedirect("/tienda/index.jsp");
+			}else {
+				agregarUsuario(request,response);
+			}
+			
 		}
 		
 		if(actualizar != null) {
-			actualizarUsuario(request,response);
+			if(validar(request,response)) {
+				getServletContext().setAttribute("mensaje", mensaje);
+				getServletContext().setAttribute("clase", clase);
+				response.sendRedirect("/tienda/index.jsp");
+			}else {
+				actualizarUsuario(request,response);
+			}
+			
 		}
 		
 		if(listar != null) {
@@ -66,12 +85,58 @@ public class ServletLogin extends HttpServlet {
 			 *
 			*/
 			//listarUsuario(request,response);
-			buscarUsuario(request,response);
+			
+				if(validarCedula(request,response)) {
+					mensaje = "Es necesario ingresar una cedula";
+					getServletContext().setAttribute("mensaje", mensaje);
+					getServletContext().setAttribute("clase", clase);
+					response.sendRedirect("/tienda/index.jsp");
+				}else {
+					buscarUsuario(request,response);
+				}
+			
+			
 		}
 		
 		if(eliminar != null) {
-			eliminarUsuario(request,response);
+			if(validarCedula(request,response)) {
+				mensaje = "Es necesario ingresar una cedula";
+				getServletContext().setAttribute("mensaje", mensaje);
+				getServletContext().setAttribute("clase", clase);
+				response.sendRedirect("/tienda/index.jsp");
+			}else {
+				eliminarUsuario(request,response);
+			}
 		}
+	}
+	
+	//Validar solo el campo cedula
+	//----------------------------------
+		
+	public boolean validarCedula(HttpServletRequest request, HttpServletResponse response){
+			boolean resultado = false;
+			
+			if(request.getParameter("cedula").isEmpty()) {		
+				resultado = true;
+			}
+			
+			return resultado;
+	}
+		
+	//Validar todos los Campos
+	//----------------------------------
+	
+	public boolean validar(HttpServletRequest request, HttpServletResponse response){
+		boolean resultado = false;
+
+		if(request.getParameter("cedula").isEmpty() || request.getParameter("nombre").isBlank()
+				|| request.getParameter("email").isBlank() || request.getParameter("usuario").isBlank()
+				|| request.getParameter("password").isBlank()) {
+	
+			resultado = true;
+		}
+		
+		return resultado;
 	}
 
 	//Agregar
@@ -85,16 +150,22 @@ public class ServletLogin extends HttpServlet {
 		usuario.setEmail(request.getParameter("email"));
 		usuario.setUsername(request.getParameter("usuario"));
 		usuario.setPassword(request.getParameter("password"));
+		String mensaje = "Usuario Creado";
+		String clase = "parrafo-green";
 		int respuesta=0;
+		
 		try {
 			respuesta = TestJSONUsuarios.postJSON(usuario);
 			//PrintWriter writer = response.getWriter();
 			if(respuesta == 200) {
 				//writer.println("Registro Agregado!");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				getServletContext().setAttribute("mensaje", mensaje);
+				getServletContext().setAttribute("clase", clase);
+				response.sendRedirect("/tienda/index.jsp");
+
 			} else {
 				//writer.println("Error "+respuesta);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				response.sendRedirect("/tienda/index.jsp");
 			}
 			//writer.close();
 		} catch (IOException e) {
@@ -104,8 +175,10 @@ public class ServletLogin extends HttpServlet {
 	
 	//Buscar por id
 	//----------------------------------
-	public void buscarUsuario(HttpServletRequest request, HttpServletResponse response) {
+	public void buscarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int cedula = Integer.parseInt(request.getParameter("cedula"));
+		String mensaje = "Usuario Inexistente";
+		String clase = "parrafo-red";
 		try {
 			UsuarioDTO usuario = TestJSONUsuarios.getJSONId(cedula);
 			//Le indicamos a que pagina se redigira
@@ -116,7 +189,10 @@ public class ServletLogin extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
 			dispatcher.forward(request, response);
 		}catch(Exception e) {
-			e.printStackTrace();
+			
+			getServletContext().setAttribute("mensaje", mensaje);
+			getServletContext().setAttribute("clase", clase);
+			response.sendRedirect("/tienda/index.jsp");
 		}
 	}
 	
@@ -145,16 +221,20 @@ public class ServletLogin extends HttpServlet {
 		usuario.setUsername(request.getParameter("usuario"));
 		usuario.setPassword(request.getParameter("password"));
 		
+		String mensaje = "Datos del usuario Actualizados";
+		String clase = "parrafo-green";
+		
 		int respuesta=0;
 		try {
 			respuesta = TestJSONUsuarios.putJSON(usuario,cedula);
-			PrintWriter writer = response.getWriter();
 			if(respuesta == 200) {
-				writer.println("Registro Actualizado!");
+				getServletContext().setAttribute("mensaje", mensaje);
+				getServletContext().setAttribute("clase", clase);
+				response.sendRedirect("/tienda/index.jsp");
 			} else {
-				writer.println("Error "+respuesta);
+				response.sendRedirect("/tienda/index.jsp");
 			}
-			writer.close();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -162,21 +242,28 @@ public class ServletLogin extends HttpServlet {
 	
 	//Eliminar
 	//----------------------------------
-	public void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
+	public void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int cedula = Integer.parseInt(request.getParameter("cedula"));
-		
+		String mensaje = "Usuario Inexistente";
+		String clase = "parrafo-red";
 		int respuesta=0;
 		try {
 			respuesta = TestJSONUsuarios.deleteJSON(cedula);
 			PrintWriter writer = response.getWriter();
 			if(respuesta == 200) {
-				writer.println("Registro Eliminado!");
+				mensaje = "Usuario Eliminado Correctamente!";
+				clase = "parrafo-green";
+				getServletContext().setAttribute("mensaje", mensaje);
+				getServletContext().setAttribute("clase", clase);
+				response.sendRedirect("/tienda/index.jsp");
 			} else {
-				writer.println("Error "+respuesta);
+				response.sendRedirect("/tienda/index.jsp");
 			}
 			writer.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			getServletContext().setAttribute("mensaje", mensaje);
+			getServletContext().setAttribute("clase", clase);
+			response.sendRedirect("/tienda/index.jsp");
 		}
 	}
 }

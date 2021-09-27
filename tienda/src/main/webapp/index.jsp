@@ -70,10 +70,10 @@
                 <input type="submit" class="form-button-eliminar" value="Eliminar" name="Eliminar">
             </div>
             <div class="div-parrafo">
-        
+        		 <p class="${clase}">${mensaje}</p> 
             </div>
         </form>
     </div>
-    <script src="JavaScript/validacion.js"></script>
+    
 </body>
 </html>
