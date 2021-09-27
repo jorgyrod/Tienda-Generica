@@ -31,7 +31,7 @@
     </header>
     <nav class="nav">
         <ul class="nav__ul">
-			<li class="nav__li"><a href="index.jsp"><i class="fas fa-users"></i>Usuarios</a></li>
+            <li class="nav__li"><a href="index.jsp"><i class="fas fa-users"></i>Usuarios</a></li>
             <li class="nav__li"><a href="cliente.jsp"><i class="fas fa-cart-arrow-down"></i>Clientes</a></li>
             <li class="nav__li"><a href="proveedor.jsp"><i class="fas fa-shopping-basket"></i>Proveedores</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-gifts"></i>Productos</a></li>
@@ -41,11 +41,11 @@
     </nav>
 
     <div class="form-container">
-        <form method="POST" action="./ProveedorServlet" class="form">
+        <form method="POST" action="./ClienteServlet" class="form">
             <div class="ingresoDatos">
                 <div class="datos-container">
                     <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Nit" name="nit">
+                        <input type="text" class="form-input" placeholder="Cedula" name="cedula">
                     </div>
                     <div class="datosform">
                         <input type="text" class="form-input" placeholder="Nombre Completo" name="nombre">
@@ -59,7 +59,7 @@
                         <input type="text" class="form-input" placeholder="Telefono" name="telefono">
                     </div>
                     <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Ciudad" name="ciudad">
+                        <input type="text" class="form-input" placeholder="Correo" name="email">
                     </div>
                 </div>
             </div>

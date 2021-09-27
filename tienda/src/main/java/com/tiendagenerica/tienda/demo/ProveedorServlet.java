@@ -43,7 +43,7 @@ public class ProveedorServlet extends HttpServlet {
 		doGet(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		String mensaje = "Faltan datos de Usuario";
+		String mensaje = "Faltan datos del Proveedor";
 		String clase = "parrafo-red";
 		
 		String agregar = request.getParameter("Agregar");

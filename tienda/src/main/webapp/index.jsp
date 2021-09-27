@@ -31,8 +31,8 @@
     </header>
     <nav class="nav">
         <ul class="nav__ul">
-            <li class="nav__li"><a href="#"><i class="fas fa-users"></i>Usuarios</a></li>
-            <li class="nav__li"><a href="#"><i class="fas fa-cart-arrow-down"></i>Clientes</a></li>
+            <li class="nav__li"><a href="index.jsp"><i class="fas fa-users"></i>Usuarios</a></li>
+            <li class="nav__li"><a href="cliente.jsp"><i class="fas fa-cart-arrow-down"></i>Clientes</a></li>
             <li class="nav__li"><a href="proveedor.jsp"><i class="fas fa-shopping-basket"></i>Proveedores</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-gifts"></i>Productos</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-coins"></i>Ventas</a></li>
