@@ -20,14 +20,14 @@ import com.tiendagenerica.tienda.Entidades.Usuario;
 /**
  * Servlet implementation class ServletLogin
  */
-@WebServlet("/ServletLogin")
-public class ServletLogin extends HttpServlet {
+@WebServlet("/UsuarioServlet")
+public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletLogin() {
+    public UsuarioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -62,7 +62,7 @@ public class ServletLogin extends HttpServlet {
 			if(validar(request,response)) {
 				getServletContext().setAttribute("mensaje", mensaje);
 				getServletContext().setAttribute("clase", clase);
-				response.sendRedirect("/tienda/index.jsp");
+				response.sendRedirect("/tienda/usuario.jsp");
 			}else {
 				agregarUsuario(request,response);
 			}
@@ -73,7 +73,7 @@ public class ServletLogin extends HttpServlet {
 			if(validar(request,response)) {
 				getServletContext().setAttribute("mensaje", mensaje);
 				getServletContext().setAttribute("clase", clase);
-				response.sendRedirect("/tienda/index.jsp");
+				response.sendRedirect("/tienda/usuario.jsp");
 			}else {
 				actualizarUsuario(request,response);
 			}
@@ -90,7 +90,7 @@ public class ServletLogin extends HttpServlet {
 					mensaje = "Es necesario ingresar una cedula";
 					getServletContext().setAttribute("mensaje", mensaje);
 					getServletContext().setAttribute("clase", clase);
-					response.sendRedirect("/tienda/index.jsp");
+					response.sendRedirect("/tienda/usuario.jsp");
 				}else {
 					buscarUsuario(request,response);
 				}
@@ -103,7 +103,7 @@ public class ServletLogin extends HttpServlet {
 				mensaje = "Es necesario ingresar una cedula";
 				getServletContext().setAttribute("mensaje", mensaje);
 				getServletContext().setAttribute("clase", clase);
-				response.sendRedirect("/tienda/index.jsp");
+				response.sendRedirect("/tienda/usuario.jsp");
 			}else {
 				eliminarUsuario(request,response);
 			}
@@ -161,11 +161,11 @@ public class ServletLogin extends HttpServlet {
 				//writer.println("Registro Agregado!");
 				getServletContext().setAttribute("mensaje", mensaje);
 				getServletContext().setAttribute("clase", clase);
-				response.sendRedirect("/tienda/index.jsp");
+				response.sendRedirect("/tienda/usuario.jsp");
 
 			} else {
 				//writer.println("Error "+respuesta);
-				response.sendRedirect("/tienda/index.jsp");
+				response.sendRedirect("/tienda/usuario.jsp");
 			}
 			//writer.close();
 		} catch (IOException e) {
@@ -192,7 +192,7 @@ public class ServletLogin extends HttpServlet {
 			
 			getServletContext().setAttribute("mensaje", mensaje);
 			getServletContext().setAttribute("clase", clase);
-			response.sendRedirect("/tienda/index.jsp");
+			response.sendRedirect("/tienda/usuario.jsp");
 		}
 	}
 	
@@ -230,7 +230,7 @@ public class ServletLogin extends HttpServlet {
 			if(respuesta == 200) {
 				getServletContext().setAttribute("mensaje", mensaje);
 				getServletContext().setAttribute("clase", clase);
-				response.sendRedirect("/tienda/index.jsp");
+				response.sendRedirect("/tienda/usuario.jsp");
 			}
 
 		} catch (IOException e) {
@@ -238,7 +238,7 @@ public class ServletLogin extends HttpServlet {
 			clase = "parrafo-red";
 			getServletContext().setAttribute("mensaje", mensaje);
 			getServletContext().setAttribute("clase", clase);
-			response.sendRedirect("/tienda/index.jsp");
+			response.sendRedirect("/tienda/usuario.jsp");
 		}
 	}
 	
@@ -256,14 +256,14 @@ public class ServletLogin extends HttpServlet {
 				clase = "parrafo-green";
 				getServletContext().setAttribute("mensaje", mensaje);
 				getServletContext().setAttribute("clase", clase);
-				response.sendRedirect("/tienda/index.jsp");
+				response.sendRedirect("/tienda/usuario.jsp");
 			} else {
-				response.sendRedirect("/tienda/index.jsp");
+				response.sendRedirect("/tienda/usuario.jsp");
 			}
 		} catch (IOException e) {
 			getServletContext().setAttribute("mensaje", mensaje);
 			getServletContext().setAttribute("clase", clase);
-			response.sendRedirect("/tienda/index.jsp");
+			response.sendRedirect("/tienda/usuario.jsp");
 		}
 	}
 }

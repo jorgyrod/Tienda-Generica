@@ -23,25 +23,27 @@
                 <h1>Tienda Generica</h1>
             </div>
             <div class="header__li__salir">
-                <h2 class="exit">Salir</h2>
-                <i class="fas fa-sign-out-alt"></i>
+                <a href="Login.jsp" class="a_salir">
+	                <h2 class="exit">Salir</h2>
+	                <i class="fas fa-sign-out-alt"></i>
+                </a>
             </div>
         </div>
         
     </header>
     <nav class="nav">
         <ul class="nav__ul">
-            <li class="nav__li"><a href="index.jsp"><i class="fas fa-users"></i>Usuarios</a></li>
+            <li class="nav__li"><a href="usuario.jsp"><i class="fas fa-users"></i>Usuarios</a></li>
             <li class="nav__li"><a href="cliente.jsp"><i class="fas fa-cart-arrow-down"></i>Clientes</a></li>
-            <li class="nav__li"><a href="proveedor.jsp"><i class="fas fa-shopping-basket"></i>Proveedores</a></li>
-            <li class="nav__li"><a href="#"><i class="fas fa-gifts"></i>Productos</a></li>
+            <li class="nav__li"><a href="proveedor.jsp"><i class="fas fa-shopping-basket" ></i>Proveedores</a></li>
+            <li class="nav__li"><a href="#"><i class="fas fa-gifts" ></i>Productos</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-coins"></i>Ventas</a></li>
             <li class="nav__li"><a href="#"><i class="fas fa-list-alt"></i>Reportes</a></li>
         </ul>
     </nav>
 
     <div class="form-container">
-        <form method="POST" action="./ServletLogin" class="form">
+        <form method="POST" action="./UsuarioServlet" class="form">
             <div class="ingresoDatos">
                 <div class="datos-container">
                     <div class="datosform">
@@ -70,7 +72,7 @@
                 <input type="submit" class="form-button-eliminar" value="Eliminar" name="Eliminar">
             </div>
             <div class="div-parrafo">
-        		 <p class="${clase}">${mensaje}</p> 
+        		 <p class="${clase}" id="parrafo">${mensaje}</p> 
             </div>
         </form>
     </div>

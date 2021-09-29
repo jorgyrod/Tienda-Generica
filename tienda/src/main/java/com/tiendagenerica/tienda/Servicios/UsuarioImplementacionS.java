@@ -61,6 +61,7 @@ public class UsuarioImplementacionS implements IUsuarioServicios{
 		//Convertimos la entidad a un objeto
 		//Retornamos el objeto
 		return MHelpers.modelMapper().map(usuario.get(), UsuarioDTO.class);
+
 	}
 
 	//Crear un usuario
@@ -107,6 +108,11 @@ public class UsuarioImplementacionS implements IUsuarioServicios{
 	public void eliminar(int id) {
 		this.usuarioDAO.deleteById(id);
 		
+	}
+
+	@Override
+	public Usuario buscarUsername(String username) {
+		return this.usuarioDAO.findByUsername(username);
 	}
 	
 	//Este metodo nos retornara un objeto de tipo UsuariosDTO por si lo llegamos a necesitar

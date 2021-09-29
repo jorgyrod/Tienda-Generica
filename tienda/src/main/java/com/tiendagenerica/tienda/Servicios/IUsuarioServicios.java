@@ -2,6 +2,7 @@ package com.tiendagenerica.tienda.Servicios;
 
 import java.util.List;
 
+
 import com.tiendagenerica.tienda.DTO.UsuarioDTO;
 import com.tiendagenerica.tienda.Entidades.Usuario;
 
@@ -12,7 +13,10 @@ public interface IUsuarioServicios {
 	
 	//Para buscar por ID
 	UsuarioDTO buscarID(int cedula);
-	
+
+	//Para buscar por Username
+	Usuario buscarUsername(String username);
+
 	//Crear
 	void crear(Usuario usuario);
 	

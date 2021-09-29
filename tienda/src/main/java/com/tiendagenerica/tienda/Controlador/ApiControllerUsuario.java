@@ -66,6 +66,15 @@ public class ApiControllerUsuario {
 		return ResponseEntity.ok(this.userService.buscarID(cedula));
 	}
 	
+	//Buscar usuario por Username
+	//(En este caso en vez de producir JSON)
+	//---------------------------
+	
+	@GetMapping(value = "/buscarUser/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> buscarUsuarioId(@PathVariable String username){
+		return ResponseEntity.ok(this.userService.buscarUsername(username));
+	}
+	
 	//Buscar todos los usuarios
 	//(En este caso en vez de producir JSON)
 	//---------------------------

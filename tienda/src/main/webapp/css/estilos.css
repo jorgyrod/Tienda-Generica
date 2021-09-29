@@ -32,15 +32,16 @@ h1{
 
 h2{
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 20px;
+    font-size: 25px;
 }
+
 
 .header__li__salir{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 26px;
-    width: 110px;
+    width: 130px;
     height: 45px;
     background-color: red;
     border-radius: 30px;
@@ -49,6 +50,15 @@ h2{
              -2px -1px 4px #ffff0f;
     color: #000;
 
+}
+
+.a_salir{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+    width: 120px;
+    color: #000;
 }
 
 .header__li__salir i{
@@ -122,7 +132,7 @@ h2{
 
 /*------------------------------------*/
 
-.form-container, .div-parrafo{
+.form-container, .div-parrafo, .datos-usuario{
     display: flex;
     flex-wrap: wrap;
     width: 700px;
@@ -137,7 +147,7 @@ h2{
     height: 350px;
 }
 
-.div-parrafo, .form-input {
+.div-parrafo, .form-input, tr{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 100;
     font-size: 18px;
@@ -254,6 +264,28 @@ input{
                 inset -4px -4px 8px #7b1200;
 }
 
+/*Tabla Usuarios*/
+/*--------------------------------*/
+
+.datos{
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+.datos-usuario{
+    margin-top: 10px;
+}
+
+tr{
+    height: 30px;
+    text-align: center;
+}
+.info-column{
+    text-align: center;
+}
+
+
+
 /*Responsive  max-widht 380px*/
 /*--------------------------------*/
 @media screen and (max-width:380px){
@@ -346,6 +378,18 @@ input{
 
     p{
         width: 100px;
+    }
+    
+     /*
+        Div Tabla Datos
+        ---------------------------
+    */
+
+    .datos-usuario{
+        width: 300px;
+    }
+    tr{
+        font-size: 13px;
     }
 
 }
@@ -444,6 +488,18 @@ input{
         width: 100px;
     }
     
+     /*
+        Div Tabla Datos
+        ---------------------------
+    */
+
+    .datos-usuario{
+        width: 300px;
+    }
+    tr{
+        font-size: 13px;
+    }
+
 }
 
 /*Responsive*/
@@ -528,6 +584,17 @@ input{
         width: 100px;
     }
     
+     /*
+        Div Tabla Datos
+        ---------------------------
+    */
+
+    .datos-usuario{
+        width: 480px;
+    }
+    tr{
+        font-size: 15px;
+    }
 
 }
 
@@ -615,4 +682,21 @@ input{
         width: 500px;
     }
     
+     /*
+        Div Tabla Datos
+        ---------------------------
+    */
+
+    .datos-usuario{
+        width: 950px;
+        margin: auto;
+    }
+    tr{
+        font-size: 17px;
+    }
+    
+    .datos{
+        border-collapse: separate;
+        border-spacing: 55px 10px;
+    }
 }
