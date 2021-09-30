@@ -53,8 +53,8 @@ public class ProveedorServlet extends HttpServlet {
 		
 		if(agregar != null) {
 			if(validar(request,response)) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeProv", mensaje);
+				getServletContext().setAttribute("claseProv", clase);
 				response.sendRedirect("/tienda/proveedor.jsp");
 			}else {
 				agregarProveedor(request,response);
@@ -63,8 +63,8 @@ public class ProveedorServlet extends HttpServlet {
 		
 		if(actualizar != null) {
 			if(validar(request,response)) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeProv", mensaje);
+				getServletContext().setAttribute("claseProv", clase);
 				response.sendRedirect("/tienda/proveedor.jsp");
 			}else {
 				actualizarProveedor(request,response);
@@ -74,8 +74,8 @@ public class ProveedorServlet extends HttpServlet {
 		if( listar != null) {
 			if(validarNit(request,response)) {
 				mensaje = "Nit Errado!!";
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeProv", mensaje);
+				getServletContext().setAttribute("claseProv", clase);
 				response.sendRedirect("/tienda/proveedor.jsp");
 			}else {
 				buscarProveedor(request,response);
@@ -85,8 +85,8 @@ public class ProveedorServlet extends HttpServlet {
 		if(eliminar != null) {
 			if(validarNit(request,response)) {
 				mensaje = "Nit Errado!!";
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeProv", mensaje);
+				getServletContext().setAttribute("claseProv", clase);
 				response.sendRedirect("/tienda/proveedor.jsp");
 			}else {
 				eliminarProveedor(request,response);
@@ -148,8 +148,8 @@ public class ProveedorServlet extends HttpServlet {
 				respuesta = JSONProveedor.postJSONProveedor(proveedor);
 				if(respuesta == 200) {
 					
-					getServletContext().setAttribute("mensaje", mensaje);
-					getServletContext().setAttribute("clase", clase);
+					getServletContext().setAttribute("mensajeProv", mensaje);
+					getServletContext().setAttribute("claseProv", clase);
 					response.sendRedirect("/tienda/proveedor.jsp");
 				}else {
 					response.sendRedirect("/tienda/proveedor.jsp");
@@ -181,13 +181,13 @@ public class ProveedorServlet extends HttpServlet {
 					
 					mensaje = "Datos del Proveedor Actualizados";
 					clase = "parrafo-green"; 
-					getServletContext().setAttribute("mensaje", mensaje);
-					getServletContext().setAttribute("clase", clase);
+					getServletContext().setAttribute("mensajeProv", mensaje);
+					getServletContext().setAttribute("claseProv", clase);
 					response.sendRedirect("/tienda/proveedor.jsp");
 				}
 			}catch(IOException e) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeProv", mensaje);
+				getServletContext().setAttribute("claseProv", clase);
 				response.sendRedirect("/tienda/proveedor.jsp");
 			}
 		}
@@ -211,8 +211,8 @@ public class ProveedorServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 				
 			}catch(Exception e) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeProv", mensaje);
+				getServletContext().setAttribute("claseProv", clase);
 				response.sendRedirect("/tienda/proveedor.jsp");
 			}
 		}
@@ -231,15 +231,15 @@ public class ProveedorServlet extends HttpServlet {
 				if(respuesta == 200) {
 					mensaje = "Proveedor Eliminado Correctamente!";
 					clase = "parrafo-green";
-					getServletContext().setAttribute("mensaje", mensaje);
-					getServletContext().setAttribute("clase", clase);
+					getServletContext().setAttribute("mensajeProv", mensaje);
+					getServletContext().setAttribute("claseProv", clase);
 					response.sendRedirect("/tienda/proveedor.jsp");
 				}
 				
 				
 			} catch(IOException e) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeProv", mensaje);
+				getServletContext().setAttribute("claseProv", clase);
 				response.sendRedirect("/tienda/proveedor.jsp");
 			}
 		}

@@ -60,8 +60,8 @@ public class UsuarioServlet extends HttpServlet {
 		
 		if(agregar != null) {
 			if(validar(request,response)) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeUsu", mensaje);
+				getServletContext().setAttribute("claseUsu", clase);
 				response.sendRedirect("/tienda/usuario.jsp");
 			}else {
 				agregarUsuario(request,response);
@@ -71,8 +71,8 @@ public class UsuarioServlet extends HttpServlet {
 		
 		if(actualizar != null) {
 			if(validar(request,response)) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeUsu", mensaje);
+				getServletContext().setAttribute("claseUsu", clase);
 				response.sendRedirect("/tienda/usuario.jsp");
 			}else {
 				actualizarUsuario(request,response);
@@ -88,8 +88,8 @@ public class UsuarioServlet extends HttpServlet {
 			
 				if(validarCedula(request,response)) {
 					mensaje = "Es necesario ingresar una cedula";
-					getServletContext().setAttribute("mensaje", mensaje);
-					getServletContext().setAttribute("clase", clase);
+					getServletContext().setAttribute("mensajeUsu", mensaje);
+					getServletContext().setAttribute("claseUsu", clase);
 					response.sendRedirect("/tienda/usuario.jsp");
 				}else {
 					buscarUsuario(request,response);
@@ -101,8 +101,8 @@ public class UsuarioServlet extends HttpServlet {
 		if(eliminar != null) {
 			if(validarCedula(request,response)) {
 				mensaje = "Es necesario ingresar una cedula";
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeUsu", mensaje);
+				getServletContext().setAttribute("claseUsu", clase);
 				response.sendRedirect("/tienda/usuario.jsp");
 			}else {
 				eliminarUsuario(request,response);
@@ -159,8 +159,8 @@ public class UsuarioServlet extends HttpServlet {
 			//PrintWriter writer = response.getWriter();
 			if(respuesta == 200) {
 				//writer.println("Registro Agregado!");
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeUsu", mensaje);
+				getServletContext().setAttribute("claseUsu", clase);
 				response.sendRedirect("/tienda/usuario.jsp");
 
 			} else {
@@ -190,8 +190,8 @@ public class UsuarioServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}catch(Exception e) {
 			
-			getServletContext().setAttribute("mensaje", mensaje);
-			getServletContext().setAttribute("clase", clase);
+			getServletContext().setAttribute("mensajeUsu", mensaje);
+			getServletContext().setAttribute("claseUsu", clase);
 			response.sendRedirect("/tienda/usuario.jsp");
 		}
 	}
@@ -228,16 +228,16 @@ public class UsuarioServlet extends HttpServlet {
 		try {
 			respuesta = TestJSONUsuarios.putJSON(usuario,cedula);
 			if(respuesta == 200) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeUsu", mensaje);
+				getServletContext().setAttribute("claseUsu", clase);
 				response.sendRedirect("/tienda/usuario.jsp");
 			}
 
 		} catch (IOException e) {
 			mensaje = "Usuario Inexistente";
 			clase = "parrafo-red";
-			getServletContext().setAttribute("mensaje", mensaje);
-			getServletContext().setAttribute("clase", clase);
+			getServletContext().setAttribute("mensajeUsu", mensaje);
+			getServletContext().setAttribute("claseUsu", clase);
 			response.sendRedirect("/tienda/usuario.jsp");
 		}
 	}
@@ -254,15 +254,15 @@ public class UsuarioServlet extends HttpServlet {
 			if(respuesta == 200) {
 				mensaje = "Usuario Eliminado Correctamente!";
 				clase = "parrafo-green";
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeUsu", mensaje);
+				getServletContext().setAttribute("claseUsu", clase);
 				response.sendRedirect("/tienda/usuario.jsp");
 			} else {
 				response.sendRedirect("/tienda/usuario.jsp");
 			}
 		} catch (IOException e) {
-			getServletContext().setAttribute("mensaje", mensaje);
-			getServletContext().setAttribute("clase", clase);
+			getServletContext().setAttribute("mensajeUsu", mensaje);
+			getServletContext().setAttribute("claseUsu", clase);
 			response.sendRedirect("/tienda/usuario.jsp");
 		}
 	}

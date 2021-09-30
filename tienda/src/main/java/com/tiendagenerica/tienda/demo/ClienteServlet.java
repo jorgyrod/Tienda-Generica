@@ -52,8 +52,8 @@ public class ClienteServlet extends HttpServlet {
 		
 		if(agregar != null) {
 			if(validar(request,response)) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeCli", mensaje);
+				getServletContext().setAttribute("claseCli", clase);
 				response.sendRedirect("/tienda/cliente.jsp");
 			}else {
 				agregarCliente(request,response);
@@ -62,8 +62,8 @@ public class ClienteServlet extends HttpServlet {
 		
 		if(actualizar != null) {
 			if(validar(request,response)) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeCli", mensaje);
+				getServletContext().setAttribute("claseCli", clase);
 				response.sendRedirect("/tienda/cliente.jsp");
 			}else {
 				actualizarCliente(request,response);
@@ -73,8 +73,8 @@ public class ClienteServlet extends HttpServlet {
 		if( listar != null) {
 			if(validarCedula(request,response)) {
 				mensaje = "Cedula Errada!!";
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeCli", mensaje);
+				getServletContext().setAttribute("claseCli", clase);
 				response.sendRedirect("/tienda/cliente.jsp");
 			}else {
 				buscarCliente(request,response);
@@ -84,8 +84,8 @@ public class ClienteServlet extends HttpServlet {
 		if(eliminar != null) {
 			if(validarCedula(request,response)) {
 				mensaje = "Cedula Errado!!";
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeCli", mensaje);
+				getServletContext().setAttribute("claseCli", clase);
 				response.sendRedirect("/tienda/cliente.jsp");
 			}else {
 				eliminarCliente(request,response);
@@ -145,8 +145,8 @@ public class ClienteServlet extends HttpServlet {
 			respuesta = JSONCliente.postJSONCliente(cliente);
 			if(respuesta == 200) {
 				
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeCli", mensaje);
+				getServletContext().setAttribute("claseCli", clase);
 				response.sendRedirect("/tienda/cliente.jsp");
 			}else {
 				response.sendRedirect("/tienda/cliente.jsp");
@@ -180,13 +180,13 @@ public class ClienteServlet extends HttpServlet {
 				
 				mensaje = "Datos del Cliente Actualizados";
 				clase = "parrafo-green"; 
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeCli", mensaje);
+				getServletContext().setAttribute("claseCli", clase);
 				response.sendRedirect("/tienda/cliente.jsp");
 			}
 		}catch(IOException e) {
-			getServletContext().setAttribute("mensaje", mensaje);
-			getServletContext().setAttribute("clase", clase);
+			getServletContext().setAttribute("mensajeCli", mensaje);
+			getServletContext().setAttribute("claseCli", clase);
 			response.sendRedirect("/tienda/cliente.jsp");
 		}
 	}
@@ -211,8 +211,8 @@ public class ClienteServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			
 		}catch(Exception e) {
-			getServletContext().setAttribute("mensaje", mensaje);
-			getServletContext().setAttribute("clase", clase);
+			getServletContext().setAttribute("mensajeCli", mensaje);
+			getServletContext().setAttribute("claseCli", clase);
 			response.sendRedirect("/tienda/cliente.jsp");
 		}
 	}
@@ -231,14 +231,14 @@ public class ClienteServlet extends HttpServlet {
 				if(respuesta == 200) {						
 					mensaje = "Cliente Eliminado Correctamente!";
 					clase = "parrafo-green";
-					getServletContext().setAttribute("mensaje", mensaje);
-					getServletContext().setAttribute("clase", clase);
+					getServletContext().setAttribute("mensajeCli", mensaje);
+					getServletContext().setAttribute("claseCli", clase);
 					response.sendRedirect("/tienda/cliente.jsp");
 				}				
 					
 		}catch(IOException e) {
-				getServletContext().setAttribute("mensaje", mensaje);
-				getServletContext().setAttribute("clase", clase);
+				getServletContext().setAttribute("mensajeCli", mensaje);
+				getServletContext().setAttribute("claseCli", clase);
 				response.sendRedirect("/tienda/cliente.jsp");
 			}
 	}

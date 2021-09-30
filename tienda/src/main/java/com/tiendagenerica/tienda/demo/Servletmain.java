@@ -61,8 +61,8 @@ public class Servletmain extends HttpServlet {
 			}
 			
 		}catch(Exception e) {
-			getServletContext().setAttribute("mensaje", mensaje);
-			getServletContext().setAttribute("clase", clase);
+			getServletContext().setAttribute("mensajeLogin", mensaje);
+			getServletContext().setAttribute("claseLogin", clase);
 			response.sendRedirect("/tienda/Login.jsp");
 		}
 	}

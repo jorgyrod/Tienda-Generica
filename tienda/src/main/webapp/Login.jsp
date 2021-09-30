@@ -33,7 +33,7 @@
                             <input type="submit" value="Ingresar" class="btn_ingresar" name="ingresar">
                         </form>
                         <div class="div-parrafo">
-                            <p>${mensaje}</p> 
+                            <p clase="${claseLogin}">${mensajeLogin}</p> 
                         </div>
                     </div>
                 </div>

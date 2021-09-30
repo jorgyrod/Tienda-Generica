@@ -72,7 +72,7 @@
                 <input type="submit" class="form-button-eliminar" value="Eliminar" name="Eliminar">
             </div>
             <div class="div-parrafo">
-        		 <p class="${clase}" id="parrafo">${mensaje}</p> 
+        		 <p class="${claseCli}" id="parrafo">${mensajeCli}</p> 
             </div>
         </form>
     </div>
