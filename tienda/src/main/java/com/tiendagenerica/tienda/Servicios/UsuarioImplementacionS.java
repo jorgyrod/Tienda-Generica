@@ -27,8 +27,7 @@ public class UsuarioImplementacionS implements IUsuarioServicios{
 		
 		//Creamos una lista a la cual le asignamos un nuevo arraylist
 		List<UsuarioDTO> dto = new ArrayList<>();
-		//Como el findAll nos devuelve un iterable con todos los usuarios 
-		//se lo asignamos a un nuevo iterable
+		
 		Iterable<Usuario> usuarios = this.usuarioDAO.findAll();
 		
 		//Recorremos el iterable

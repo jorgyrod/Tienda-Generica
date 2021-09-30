@@ -58,6 +58,11 @@
 		    <version>2.3.7</version>
 		    <type>jar</type>
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-csv</artifactId>
+		    <version>1.8</version>
+		</dependency>
 	</dependencies>
 
 	<build>
