@@ -9,6 +9,7 @@
     <title>Tienda Generica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,11 +21,11 @@
         <div class="header-container">
             <div class="header__li">
                 <i class="fas fa-store"></i>
-                <h1>Tienda Generica</h1>
+                <h1><font color="white" style = "font-family:helvetica;">Tienda Genérica</font></h1>
             </div>
            <div class="header__li__salir">
                 <a href="Login.jsp" class="a_salir">
-	                <h2 class="exit">Salir</h2>
+	                <h2 class="exit"><font size="4">Salir</font></h2>
 	                <i class="fas fa-sign-out-alt"></i>
                 </a>
             </div>
@@ -41,41 +42,48 @@
             <li class="nav__li"><a href="reportes.jsp"><i class="fas fa-list-alt"></i>Reportes</a></li>
         </ul>
     </nav>
-
-    <div class="form-container">
-        <form method="POST" action="./ProveedorServlet" class="form">
-            <div class="ingresoDatos">
-                <div class="datos-container">
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Nit" name="nit">
-                    </div>
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Nombre Completo" name="nombre">
-                    </div>
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Direccion" name="direccion">
-                    </div>
-                </div>
-                <div class="datos-container2">
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Telefono" name="telefono">
-                    </div>
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Ciudad" name="ciudad">
-                    </div>
-                </div>
-            </div>
-            <div class="form-buttons">
-                <input type="submit" class="form-button-consultar" value="Crear" name="Agregar">
-                <input type="submit" class="form-button-actualizar" value="Actualizar" name="Actualizar">
-                <input type="submit" class="form-button-buscar" value="Buscar" name="Listar">
-                <input type="submit" class="form-button-eliminar" value="Eliminar" name="Eliminar">
-            </div>
-            <div class="div-parrafo">
-        		 <p class="${claseProv}" id="parrafo">${mensajeProv}</p> 
-            </div>
-        </form>
+    <div class="container">
+        <div class="row align-items-center mt-4 text-center justify-content-center">
+        <h1><font color="44403F" style = "font-family:arial;">Total de ventas por cliente</font></h1>
+        <br><br><br>
+        	<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Cédula</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Valor total ventas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <th scope="row">Active</th>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-active">
+      <th scope="row">Active</th>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-active">
+      <th scope="row">Active</th>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-active">
+      <th scope="row">Active</th>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+  </tbody>
+</table>
+	<div class="input-group mb-3">
+      <span class="input-group-text">Total ventas $</span>
+      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+      <span class="input-group-text">.00</span>
     </div>
-    <script src="JavaScript/limpiar.js"></script>
-</body>
-</html>
+    <a href="reportes.jsp" class="btn btn-primary" role="button" aria-pressed="true">Volver</a>
+        <iframe name="null" style="display:non;"></iframe><!-- mensajes-->
+        </div>
+        
+    </div>

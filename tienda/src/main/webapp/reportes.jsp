@@ -9,6 +9,7 @@
     <title>Tienda Generica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,11 +21,11 @@
         <div class="header-container">
             <div class="header__li">
                 <i class="fas fa-store"></i>
-                <h1>Tienda Generica</h1>
+                <h1><font color="white" style = style = "font-family:helvetica;">Tienda Genérica</font></h1>
             </div>
            <div class="header__li__salir">
                 <a href="Login.jsp" class="a_salir">
-	                <h2 class="exit">Salir</h2>
+	                <h2 class="exit"><font size="4">Salir</font></h2>
 	                <i class="fas fa-sign-out-alt"></i>
                 </a>
             </div>
@@ -41,41 +42,12 @@
             <li class="nav__li"><a href="reportes.jsp"><i class="fas fa-list-alt"></i>Reportes</a></li>
         </ul>
     </nav>
-
     <div class="form-container">
-        <form method="POST" action="./ProveedorServlet" class="form">
-            <div class="ingresoDatos">
-                <div class="datos-container">
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Nit" name="nit">
-                    </div>
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Nombre Completo" name="nombre">
-                    </div>
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Direccion" name="direccion">
-                    </div>
-                </div>
-                <div class="datos-container2">
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Telefono" name="telefono">
-                    </div>
-                    <div class="datosform">
-                        <input type="text" class="form-input" placeholder="Ciudad" name="ciudad">
-                    </div>
-                </div>
-            </div>
-            <div class="form-buttons">
-                <input type="submit" class="form-button-consultar" value="Crear" name="Agregar">
-                <input type="submit" class="form-button-actualizar" value="Actualizar" name="Actualizar">
-                <input type="submit" class="form-button-buscar" value="Buscar" name="Listar">
-                <input type="submit" class="form-button-eliminar" value="Eliminar" name="Eliminar">
-            </div>
-            <div class="div-parrafo">
-        		 <p class="${claseProv}" id="parrafo">${mensajeProv}</p> 
-            </div>
-        </form>
+        <div class="row align-items-center mt-4 text-center justify-content-center">
+	        	<div class="d-grid gap-2">
+	        		<a href="listadoUsuarios.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Listado de usuarios</a>
+				  	<a href="listadoClientes.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Listado de clientes</a>
+				  	<a href="ventasCliente.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Ventas por cliente</a>
+				 </div>
+        </div>
     </div>
-    <script src="JavaScript/limpiar.js"></script>
-</body>
-</html>
