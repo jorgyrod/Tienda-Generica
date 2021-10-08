@@ -263,7 +263,12 @@ input{
     box-shadow: inset 4px 4px 8px #5b0e00,
                 inset -4px -4px 8px #7b1200;
 }
-
+.button-reportes{
+	border-radius: 4px;
+    background: white;
+    box-shadow: inset 4px 4px 8px #5b0e00,
+                inset -4px -4px 8px #7b1200;
+}
 /*Tabla Usuarios*/
 /*--------------------------------*/
 
