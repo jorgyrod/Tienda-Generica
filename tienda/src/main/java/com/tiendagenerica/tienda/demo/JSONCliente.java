@@ -12,7 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.tiendagenerica.tienda.Entidades.Clientes;
+import com.tiendagenerica.tienda.Entidades.Cliente;
 
 public class JSONCliente {
 	private static URL url;
@@ -21,7 +21,7 @@ public class JSONCliente {
 	
 	//Buscar cliente por cedula
 	//---------------------------------------
-	public static Clientes getJSONCliente(int cedula) throws IOException, ParseException {
+	public static Cliente getJSONCliente(int cedula) throws IOException, ParseException {
 		url = new URL(sitio+"clientes/buscar/"+cedula);
 		
 		HttpURLConnection http = (HttpURLConnection)url.openConnection();
@@ -36,13 +36,13 @@ public class JSONCliente {
 		}
 		//al cliente que creamos le enviamos el string para que lo convierta en un objeto
 		//Clientes ya que viene en formato JSON
-		Clientes cliente = new Clientes();
+		Cliente cliente = new Cliente();
 		cliente = parsingCliente(json);
 		return cliente;
 	}
 	
 	//Obtenemos el cliente y lo retornamos convertido 
-	public static Clientes parsingCliente(String json) throws ParseException {
+	public static Cliente parsingCliente(String json) throws ParseException {
 			//Creamos un convertidor JSON
 			JSONParser jsonParser = new JSONParser();
 					
@@ -51,7 +51,7 @@ public class JSONCliente {
 			//Creamos un nuevo objeto y le enviamos los datos que obtuvimos del 
 			//parametro String json que recibimos
 			
-			Clientes cliente = new Clientes();
+			Cliente cliente = new Cliente();
 			
 			cliente.setCedula(Integer.parseInt(innerObj.get("cedula").toString()));
 			cliente.setNombre(innerObj.get("nombre").toString());
@@ -72,7 +72,7 @@ public class JSONCliente {
 				 * la operación, será 200, de lo contrario, serán respuestas (401, 403, y 404).
 				 */
 			
-		public static int postJSONCliente(Clientes cliente) throws IOException{
+		public static int postJSONCliente(Cliente cliente) throws IOException{
 			url = new URL(sitio+"clientes/crear");
 			
 			HttpURLConnection http;
@@ -103,7 +103,7 @@ public class JSONCliente {
 		// Actualizar Cliente mediante la cedula
 		//---------------------------------------
 		
-		public static int putJSONCliente(Clientes cliente, int cedula) throws IOException{
+		public static int putJSONCliente(Cliente cliente, int cedula) throws IOException{
 			url = new URL(sitio+"clientes/actualizar/"+cedula);
 			
 			HttpURLConnection http;

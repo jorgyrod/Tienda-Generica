@@ -1,7 +1,10 @@
 package com.tiendagenerica.tienda.Entidades;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,8 @@ public class Proveedor {
 	private String direccion;
 	private int telefono;
 	private String ciudad;
+
+	
 	
 	public int getNit() {
 		return nit;

@@ -1,5 +1,8 @@
 package com.tiendagenerica.tienda.Entidades;
 
+
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,15 +13,31 @@ public class Usuario {
 
 	@Id
 	private int cedula;
+	
+	@Column(name="NOMBRE", length = 255)
 	private String nombre;
+	@Column(name="EMAIL", length = 255)
 	private String email;
+	@Column(name="USERNAME", length = 255)
 	private String username;
+	@Column(name="PASSWORD", length = 255)
 	private String password;
+	
+	/*Como el Usuario puede hacer varias ventas entonces..
+	 *Es un relacion de uno a muchos, donde guardaremos esa lista de ventas
+	 *El mappedBy = usuario es como lo definimos en la Entidad Ventas
+	 *ya que nos mapeara con el atributo usuario definido en esa entidad
+	*/
+	
+	
+	public Usuario() {
+
+	}
 	
 	public int getCedula() {
 		return cedula;
 	}
-	
+
 	public void setCedula(int cedula) {
 		this.cedula = cedula;
 	}

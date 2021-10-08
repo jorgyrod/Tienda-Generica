@@ -1,14 +1,15 @@
 package com.tiendagenerica.tienda.Servicios;
 
-import com.tiendagenerica.tienda.Entidades.DetalleProducto;
-import com.tiendagenerica.tienda.Entidades.Ventas;
+import com.tiendagenerica.tienda.DTO.DetalleDTO;
+import com.tiendagenerica.tienda.DTO.VentaDTO;
+
 
 public interface IVentaServicios {
 	
 	//Añadir Producto
 	//En este caso retornamos un objeto para poder hacer las operaciones
 	//de iva, subtotal, y total
-	void añadirDetalle(DetalleProducto detalleP);
+	void añadirDetalle(DetalleDTO detalleDTO);
 	
-	void crearVenta(Ventas venta);
+	void crearVenta(VentaDTO ventaDTO);
 }

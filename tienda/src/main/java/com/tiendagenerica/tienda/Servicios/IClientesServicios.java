@@ -1,14 +1,14 @@
 package com.tiendagenerica.tienda.Servicios;
 
-import com.tiendagenerica.tienda.Entidades.Clientes;
+import com.tiendagenerica.tienda.Entidades.Cliente;
 
 public interface IClientesServicios {
 	
-	Clientes buscarId(int cedula);
+	Cliente buscarId(int cedula);
 	
-	void crear(Clientes cliente);
+	void crear(Cliente cliente);
 	
-	void actualizar(Clientes cliente, int cedula);
+	void actualizar(Cliente cliente, int cedula);
 	
 	void eliminar(int cedula);
 }

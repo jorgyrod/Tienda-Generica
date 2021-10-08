@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tiendagenerica.tienda.Entidades.DetalleProducto;
-import com.tiendagenerica.tienda.Entidades.Ventas;
+import com.tiendagenerica.tienda.DTO.DetalleDTO;
+import com.tiendagenerica.tienda.DTO.VentaDTO;
 import com.tiendagenerica.tienda.Servicios.IVentaServicios;
 
 //Permite conexiones desde diferentes puntos a nuestra api
@@ -31,8 +31,8 @@ public class ApiControllerVentas {
 	//El responsenetity nos traera una respuesta http ejemplo 200,404 etc
 	//Ademas utilizamos RequestBody porque sera una peticion que vamos a enviar en el cuerpo 
 	
-	public ResponseEntity<Object> crearDetalle (@RequestBody DetalleProducto detalleP){
-		this.ventaService.añadirDetalle(detalleP);
+	public ResponseEntity<Object> crearDetalle (@RequestBody DetalleDTO detalleDTO){
+		this.ventaService.añadirDetalle(detalleDTO);
 		return ResponseEntity.ok(Boolean.TRUE);
 	}
 	
@@ -45,8 +45,8 @@ public class ApiControllerVentas {
 	//El responsenetity nos traera una respuesta http ejemplo 200,404 etc
 	//Ademas utilizamos RequestBody porque sera una peticion que vamos a enviar en el cuerpo 
 	
-	public ResponseEntity<Object> crearDetalle (@RequestBody Ventas venta){
-		this.ventaService.crearVenta(venta);
+	public ResponseEntity<Object> crearVenta (@RequestBody VentaDTO ventaDTO){
+		this.ventaService.crearVenta(ventaDTO);
 		return ResponseEntity.ok(Boolean.TRUE);
 	}
 }

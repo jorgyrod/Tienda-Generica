@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tiendagenerica.tienda.Entidades.Clientes;
+import com.tiendagenerica.tienda.Entidades.Cliente;
 
 /**
  * Servlet implementation class ClienteServlet
@@ -125,7 +125,7 @@ public class ClienteServlet extends HttpServlet {
 	//Agregar
 	//----------------------------------
 	public void agregarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException{
-		Clientes cliente = new Clientes();
+		Cliente cliente = new Cliente();
 		//Capturamos los datos y los enviamos al objeto proveedor
 		
 		cliente.setCedula(Integer.parseInt(request.getParameter("cedula")));
@@ -160,7 +160,7 @@ public class ClienteServlet extends HttpServlet {
 	//----------------------------------
 	public void actualizarCliente(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	
-		Clientes cliente = new Clientes();
+		Cliente cliente = new Cliente();
 		
 		int cedula = Integer.parseInt(request.getParameter("cedula"));
 		
@@ -201,7 +201,7 @@ public class ClienteServlet extends HttpServlet {
 		String clase = "parrafo-red";
 		
 		try {
-			Clientes cliente = JSONCliente.getJSONCliente(cedula);
+			Cliente cliente = JSONCliente.getJSONCliente(cedula);
 			//Le indicamos a que pagina se redigira
 			String pagina ="/respuestaCliente.jsp";
 			//Enviamos un atributo "user" para que reciba el objeto usuario

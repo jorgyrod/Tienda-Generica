@@ -1,9 +1,14 @@
 package com.tiendagenerica.tienda.Entidades;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,12 +18,24 @@ public class Ventas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo_venta;
-	private int cedula_cliente;
-	private int cedula_usuario;
+	
+	@ManyToOne
+	@JoinColumn(name="ced_cliente", referencedColumnName="cedula_cli")
+	private Cliente cliente;
+	
+	//Referenciamos que es una relacion de muchos a uno
+	//Le damos el nombre de la clave foranea y lo refenciamos con la clave primaria de Usuario
+	@ManyToOne
+	@JoinColumn(name="cedula_usuario", referencedColumnName ="cedula")
+	private Usuario usuario;
+	
 	private double iva_venta;
 	private double valor_venta;
 	private double valor_total;
 	
+	@OneToMany(mappedBy="venta")
+	private List<DetalleProducto> detalleProductos;
+
 	public int getCodigo_venta() {
 		return codigo_venta;
 	}
@@ -27,22 +44,22 @@ public class Ventas {
 		this.codigo_venta = codigo_venta;
 	}
 	
-	public int getCedula_cliente() {
-		return cedula_cliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
-	
-	public void setCedula_cliente(int cedula_cliente) {
-		this.cedula_cliente = cedula_cliente;
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	
-	public int getCedula_usuario() {
-		return cedula_usuario;
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	
-	public void setCedula_usuario(int cedula_usuario) {
-		this.cedula_usuario = cedula_usuario;
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-	
+
 	public double getIva_venta() {
 		return iva_venta;
 	}

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.tiendagenerica.tienda.DAO.IClientesDAO;
-import com.tiendagenerica.tienda.Entidades.Clientes;
+import com.tiendagenerica.tienda.Entidades.Cliente;
 import com.tiendagenerica.tienda.Utilidades.MHelpers;
 
 @Component
@@ -19,22 +19,22 @@ public class ClienteImplementacionService implements IClientesServicios{
 	//-----------------------------------
 	
 	@Override
-	public Clientes buscarId(int cedula) {
+	public Cliente buscarId(int cedula) {
 		// TODO Auto-generated method stub
 		// Nos retorna un optional this.clienteDAO.findById(cedula);
-		Optional<Clientes> cliente = this.clienteDAO.findById(cedula);
+		Optional<Cliente> cliente = this.clienteDAO.findById(cedula);
 		
 		if(!cliente.isPresent()) {
 			return null;
 		}
-		return MHelpers.modelMapper().map(cliente.get(), Clientes.class);
+		return MHelpers.modelMapper().map(cliente.get(), Cliente.class);
 	}
 
 	//Crear Cliente
 	//-----------------------------------
 	
 	@Override
-	public void crear(Clientes cliente) {
+	public void crear(Cliente cliente) {
 		this.clienteDAO.save(cliente);
 	}
 
@@ -42,10 +42,10 @@ public class ClienteImplementacionService implements IClientesServicios{
 	//-----------------------------------
 	
 	@Override
-	public void actualizar(Clientes cliente, int cedula) {
-		Optional<Clientes> getCliente = this.clienteDAO.findById(cedula);
+	public void actualizar(Cliente cliente, int cedula) {
+		Optional<Cliente> getCliente = this.clienteDAO.findById(cedula);
 		
-		Clientes clienteUpdate = getCliente.get();
+		Cliente clienteUpdate = getCliente.get();
 		
 		//Actualizamos los campos
 		clienteUpdate.setNombre(cliente.getNombre());

@@ -2,6 +2,8 @@ package com.tiendagenerica.tienda.Entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,12 +13,13 @@ public class Producto {
 	@Id
 	private int codigo_producto;
 	private String nombre_producto;
-	private int	nitproveedor;
+	
+	private int nitproveedor;
+	
 	private double precio_compra;
 	private double ivacompra;
 	private double precio_venta;
-	
-	
+
 	
 	public Producto() {
 		
@@ -48,6 +51,7 @@ public class Producto {
 		this.nombre_producto = nombre_producto;
 	}
 	
+	
 	public int getNitproveedor() {
 		return nitproveedor;
 	}
@@ -55,7 +59,8 @@ public class Producto {
 	public void setNitproveedor(int nitproveedor) {
 		this.nitproveedor = nitproveedor;
 	}
-	
+
+
 	public double getPrecio_compra() {
 		return precio_compra;
 	}

@@ -1,26 +1,38 @@
 package com.tiendagenerica.tienda.Entidades;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "clientes")
-public class Clientes {
+public class Cliente {
 	
 	@Id
-	private int cedula;
+	private int cedula_cli;
+	
+	@Column(name="NOMBRE", length = 255)
 	private String nombre;
+	@Column(name="DIRECCION", length = 255)
 	private String direccion;
+	@Column(name="TELEFONO")
 	private int telefono;
+	@Column(name="EMAIL", length = 255)
 	private String email;
 	
+	@OneToMany(mappedBy="cliente")
+	private List<Ventas> ventas;
+	
 	public int getCedula() {
-		return cedula;
+		return cedula_cli;
 	}
 	
 	public void setCedula(int cedula) {
-		this.cedula = cedula;
+		this.cedula_cli = cedula;
 	}
 	
 	public String getNombre() {

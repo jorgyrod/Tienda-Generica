@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tiendagenerica.tienda.Entidades.Clientes;
+import com.tiendagenerica.tienda.Entidades.Cliente;
 import com.tiendagenerica.tienda.Servicios.IClientesServicios;
 
 //Permite conexiones desde diferentes puntos a nuestra api
@@ -33,7 +33,7 @@ public class ApiControllerCliente {
 	//El responsenetity nos traera una respuesta http ejemplo 200,404 etc
 	//Ademas utilizamos RequestBody porque sera una peticion que vamos a enviar en el cuerpo 
 	
-	public ResponseEntity<Object> crearCliente(@RequestBody Clientes cliente){
+	public ResponseEntity<Object> crearCliente(@RequestBody Cliente cliente){
 		this.clienteService.crear(cliente);
 		return ResponseEntity.ok(Boolean.TRUE);
 	}
@@ -48,7 +48,7 @@ public class ApiControllerCliente {
 	 * pero si lo queremos hacer diferente seria asi: @PathVariable("cedula") int id
 	 * id tomaria el valor para cedula
 	 */
-	public ResponseEntity<Object> actualizarCliente(@PathVariable int cedula, @RequestBody Clientes cliente){
+	public ResponseEntity<Object> actualizarCliente(@PathVariable int cedula, @RequestBody Cliente cliente){
 		this.clienteService.actualizar(cliente, cedula);
 		return ResponseEntity.ok(Boolean.TRUE);
 	}

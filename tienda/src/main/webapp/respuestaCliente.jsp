@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <!-- Importamos los paquetes -->
 <%@ page import='java.util.Date' %>
-<%@ page import='com.tiendagenerica.tienda.Entidades.Clientes' %>
+<%@ page import='com.tiendagenerica.tienda.Entidades.Cliente' %>
 <%@ page import='java.util.ArrayList'%>
 <html>
 <head>
@@ -22,10 +22,10 @@
 			<td><label>Correo</label></td>
 		</tr>
 		<%
-			/*
+		/*
 				Recibimos el atributo "user" que enviamos en el Servlet
 			*/
-			Clientes client = (Clientes) request.getAttribute("cliente");
+			Cliente client = (Cliente) request.getAttribute("cliente");
 		%>
 			<tr>
 				<td><%=client.getCedula() %></td>
