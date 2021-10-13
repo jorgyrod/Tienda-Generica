@@ -37,7 +37,7 @@
             <li class="nav__li"><a href="cliente.jsp"  id="btn_clientes"><i class="fas fa-cart-arrow-down"></i>Clientes</a></li>
             <li class="nav__li"><a href="proveedor.jsp" id="btn_proveedor"><i class="fas fa-shopping-basket" ></i>Proveedores</a></li>
             <li class="nav__li"><a href="productos.jsp"><i class="fas fa-gifts"></i>Productos</a></li>
-            <li class="nav__li"><a href="#"><i class="fas fa-coins"></i>Ventas</a></li>
+            <li class="nav__li"><a href="ventas.jsp"><i class="fas fa-coins"></i>Ventas</a></li>
             <li class="nav__li"><a href="reportes.jsp"><i class="fas fa-list-alt"></i>Reportes</a></li>
         </ul>
     </nav>

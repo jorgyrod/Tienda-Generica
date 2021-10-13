@@ -143,11 +143,20 @@ h2{
     border-radius: 5px;
 }
 
+.ventas-container{
+	margin: 0 auto;
+    width: 900px;
+	background-color: rgb(219, 218, 218);
+	justify-content: space-around;
+	border-radius: 5px;
+	padding: 20px;
+}
+
 .form-container{
     height: 350px;
 }
 
-.div-parrafo, .form-input, tr{
+.div-parrafo, .form-input, tr, .label{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 100;
     font-size: 18px;
@@ -166,7 +175,32 @@ h2{
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
+    padding-top: 5px;
 }
+
+.ingresoDatosVentas{
+	display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+    padding-top: 5px;
+}
+
+.ingresoDatosVentasCenter{
+	display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 10;
+}
+
+.ingresoTotal{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding-top: 5px;
+}
+
 .datos-container, .datos-container2 {
     display: inline-block;
 }
