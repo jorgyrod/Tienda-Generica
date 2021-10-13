@@ -5,7 +5,6 @@ public class DetalleDTO {
 	private int codigo_detalleVenta;
 	private int cantidad_Producto;
 	private int codigo_producto;
-	private int codigo_venta;
 	
 	public int getCodigo_detalleVenta() {
 		return codigo_detalleVenta;
@@ -31,14 +30,7 @@ public class DetalleDTO {
 		this.codigo_producto = codigo_producto;
 	}
 	
-	public int getCodigo_venta() {
-		return codigo_venta;
-	}
-	
-	public void setCodigo_venta(int codigo_venta) {
-		this.codigo_venta = codigo_venta;
-	}
-	
+
 	
 	
 	

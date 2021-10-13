@@ -1,5 +1,7 @@
 package com.tiendagenerica.tienda.Servicios;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,8 @@ public class VentasImplementacion implements IVentaServicios{
 	
 	//Añadir Descripcion de producto
 	
+	private List<DetalleProducto> detalles = new ArrayList<>();
+	
 	@Override
 	public void añadirDetalle(DetalleDTO detalleDTO) {
 		double subtotal,iva,total;
@@ -58,12 +62,12 @@ public class VentasImplementacion implements IVentaServicios{
 		//Buscamos el producto mediante el codigo_producto de DetalleProducto
 		Optional<Producto> producto = this.productoDAO.findById(detalleDTO.getCodigo_producto());
 		
-		Optional<Ventas> venta = this.ventaDAO.findById(detalleDTO.getCodigo_venta());
+		//Optional<Ventas> venta = this.ventaDAO.findById(detalleDTO.getCodigo_venta());
 		
 		//Si se encontro el producto procedemos a hacer operaciones con el
 		
 		//Por ahora requiere que la venta se haya guardado primero en la base de datos
-		if(producto.isPresent() && venta.isPresent()) {
+		if(producto.isPresent()) {
 			//Hacemos la operacion del subtotal
 			subtotal = detalleDTO.getCantidad_Producto() * producto.get().getPrecio_venta();
 			//Hacemos la del iva
@@ -79,25 +83,36 @@ public class VentasImplementacion implements IVentaServicios{
 			//Le pasamos el producto al detalle
 			detalleP.setProducto(producto.get());
 			//Le pasamos La venta al detalle
-			detalleP.setVenta(venta.get());
+			//detalleP.setVenta(venta.get());
 		}
 		
-		
-
-		this.detalleDAO.save(detalleP);
+		detalles.add(detalleP);
 	}
 	
 	//Añadir la venta
 
 	@Override
 	public void crearVenta(VentaDTO ventaDTO) {
+		double subtotal=0,iva=0,total=0;
 		//Creamos un objeto de tipo entidad
 		Ventas venta = new Ventas();
 		
+		//Para el detalle Producto...
+		System.out.println(detalles);
+		//Recorremos la lista donde estan todos los detalles
+		for(DetalleProducto detalle : detalles) {
+			subtotal += detalle.getValor_subtotal();
+			iva += detalle.getValor_iva();
+			total += detalle.getValor_total();
+			//Le enviamos el objeto venta al detalle para referanciarlo con esta venta
+			detalle.setVenta(venta);
+			//Lo guardamos el detalle de la venta en la bd
+		}
+		
 		//Pasamos los valores
-		venta.setIva_venta(ventaDTO.getIva_venta());
-		venta.setValor_venta(ventaDTO.getValor_venta());
-		venta.setValor_total(ventaDTO.getValor_total());
+		venta.setIva_venta(iva);
+		venta.setValor_venta(subtotal);
+		venta.setValor_total(total);
 		
 		//Buscamos tanto usuario como cliente y los guardamos
 		Optional<Cliente> cliente = this.clienteDAO.findById(ventaDTO.getCedula_cliente());
@@ -110,6 +125,9 @@ public class VentasImplementacion implements IVentaServicios{
 		}
 		//Lo guardamos en la base de datos
 		this.ventaDAO.save(venta);
+		this.detalleDAO.saveAll(detalles);
+		//Limpiamos la lista para que no se acumulen los productos
+		detalles.clear();
 	}
 
 }

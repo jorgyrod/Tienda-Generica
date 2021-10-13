@@ -2,6 +2,7 @@ package com.tiendagenerica.tienda.Servicios;
 
 import com.tiendagenerica.tienda.DTO.DetalleDTO;
 import com.tiendagenerica.tienda.DTO.VentaDTO;
+import com.tiendagenerica.tienda.Entidades.DetalleProducto;
 
 
 public interface IVentaServicios {

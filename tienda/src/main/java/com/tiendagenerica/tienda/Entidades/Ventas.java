@@ -36,6 +36,7 @@ public class Ventas {
 	@OneToMany(mappedBy="venta")
 	private List<DetalleProducto> detalleProductos;
 
+
 	public int getCodigo_venta() {
 		return codigo_venta;
 	}
