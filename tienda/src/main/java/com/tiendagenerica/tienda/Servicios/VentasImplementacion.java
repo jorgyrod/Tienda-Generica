@@ -56,7 +56,6 @@ public class VentasImplementacion implements IVentaServicios{
 		double subtotal,iva,total;
 		DetalleProducto detalleP = new DetalleProducto();
 		
-		detalleP.setCodigo_detalleVenta(detalleDTO.getCodigo_detalleVenta());
 		detalleP.setCantidad_Producto(detalleDTO.getCantidad_Producto());
 		
 		//Buscamos el producto mediante el codigo_producto de DetalleProducto

@@ -45,40 +45,40 @@
   <br><br>
   		<div class="ventas-container">
             <div class="ingresoDatosVentasCenter">
-                  <input type="text" class="form-input" placeholder="Cedula" name="cedula" style="width: 150px">
+                  <input type="text" class="form-input" placeholder="Cedula" name="cedula" value="${cedulaC}"style="width: 150px">
                   <input type="submit" class="form-button-buscar" value="Consultar" name="consultar">
-                  <input type="text" class="form-input" placeholder="Cliente" name="cliente" style="width: 250px">
+                  <input type="text" class="form-input" placeholder="Cliente" name="cliente" value="${nombreC}" style="width: 250px">
                   <input type="text" class="form-input" placeholder="Consec." name="consecutivo" style="width: 200px">
                             
             </div>
             <br>
             <div class="ingresoDatosVentas">
-            <input type="text" class="form-input" placeholder="Cod. Producto 1" name="codProd1" style="width: 150px">
+            <input type="text" class="form-input" placeholder="Cod. Producto 1" name="codProd1" value="${codigo1}" style="width: 150px">
             <input type="submit" class="form-button-buscar" value="Consultar" name="consultarProd1">
-            <input type="text" class="form-input" placeholder="Nombre Producto 1" name="nomProd1" style="width: 300px">
-            <input type="text" class="form-input" placeholder="Cant." name="cantprod1" style="width: 50px">
-            <input type="text" class="form-input" placeholder="Valor Total" name="valrTotalProd1" style="width: 200px">
+            <input type="text" class="form-input" placeholder="Nombre Producto 1" name="nomProd1" value="${nombre1}"style="width: 300px">
+            <input type="text" class="form-input" placeholder="Cant." name="cantprod1" value="${cantidad1}"style="width: 50px">
+            <input type="text" class="form-input" placeholder="Valor Total" name="valrTotalProd1" value="${valor1}" style="width: 200px">
             </div>
              <div class="ingresoDatosVentas">
-            <input type="text" class="form-input" placeholder="Cod. Producto 2" name="codProd2" style="width: 150px">
+            <input type="text" class="form-input" placeholder="Cod. Producto 2" name="codProd2" value="${codigo2}" style="width: 150px">
             <input type="submit" class="form-button-buscar" value="Consultar" name="consultarProd2">
-            <input type="text" class="form-input" placeholder="Nombre Producto 2" name="nomProd2" style="width: 300px">
-            <input type="text" class="form-input" placeholder="Cant." name="cantprod2" style="width: 50px">
-            <input type="text" class="form-input" placeholder="Valor Total" name="valrTotalProd2" style="width: 200px">
+            <input type="text" class="form-input" placeholder="Nombre Producto 2" name="nomProd2" value="${nombre2}"style="width: 300px">
+            <input type="text" class="form-input" placeholder="Cant." name="cantprod2" value="${cantidad2}" style="width: 50px">
+            <input type="text" class="form-input" placeholder="Valor Total" name="valrTotalProd2" value="${valor2}"style="width: 200px">
             </div>
              <div class="ingresoDatosVentas">
-            <input type="text" class="form-input" placeholder="Cod. Producto 3" name="codProd3" style="width: 150px">
+            <input type="text" class="form-input" placeholder="Cod. Producto 3" name="codProd3" value="${codigo3}" style="width: 150px">
             <input type="submit" class="form-button-buscar" value="Consultar" name="consultarProd3">
-            <input type="text" class="form-input" placeholder="Nombre Producto 3" name="nomProd3" style="width: 300px">
-            <input type="text" class="form-input" placeholder="Cant." name="cantprod3" style="width: 50px">
-            <input type="text" class="form-input" placeholder="Valor Total" name="valrTotalProd3" style="width: 200px">
+            <input type="text" class="form-input" placeholder="Nombre Producto 3" name="nomProd3" value="${nombre3}"style="width: 300px">
+            <input type="text" class="form-input" placeholder="Cant." name="cantprod3" value="${cantidad3}" style="width: 50px">
+            <input type="text" class="form-input" placeholder="Valor Total" name="valrTotalProd3" value="${valor3}" style="width: 200px">
             </div>
              <div class="ingresoDatosVentas">
-            <input type="text" class="form-input" placeholder="Cod. Producto 4" name="codProd4" style="width: 150px">
+            <input type="text" class="form-input" placeholder="Cod. Producto 4" name="codProd4" value="${codigo4}" style="width: 150px">
             <input type="submit" class="form-button-buscar" value="Consultar" name="consultarProd4">
-            <input type="text" class="form-input" placeholder="Nombre Producto 4" name="nomProd4" style="width: 300px">
-            <input type="text" class="form-input" placeholder="Cant." name="cantprod4" style="width: 50px">
-            <input type="text" class="form-input" placeholder="Valor Total" name="valrTotalProd4" style="width: 200px">
+            <input type="text" class="form-input" placeholder="Nombre Producto 4" name="nomProd4" value="${nombre4}"style="width: 300px">
+            <input type="text" class="form-input" placeholder="Cant." name="cantprod4" value="${cantidad4}" style="width: 50px">
+            <input type="text" class="form-input" placeholder="Valor Total" name="valrTotalProd4" value="${valor4}" style="width: 200px">
             </div>
             
             <br>
@@ -86,19 +86,19 @@
             <div class="ingresoTotal">
             <span class="label">
             Total Venta: 
-           			<input type="text" class="form-input" placeholder="" name="totalVenta" style="width: 200px" disabled>
+           			<input type="text" class="form-input" placeholder="" name="totalVenta" value="${subtotal}" style="width: 200px" disabled>
             </span>
             </div>
              <div class="ingresoTotal">
             <span class="label">
             Total IVA: 
-            	<input type="text" class="form-input" placeholder="" name="totalIVA" style="width: 200px" disabled>
+            	<input type="text" class="form-input" placeholder="" name="totalIVA" value="${iva}" style="width: 200px" disabled>
             </span>
             </div>
             <div class="ingresoTotal">
             <span class="label">
             Total con IVA: 
-            	<input type="text" class="form-input" placeholder="" name="totalConIVA" style="width: 200px" disabled>
+            	<input type="text" class="form-input" placeholder="" name="totalConIVA" value="${total}" style="width: 200px" disabled>
             </span>
             </div>
             
@@ -106,7 +106,7 @@
             	<input type="submit" class="form-button-consultar" value="Confirmar" name="confirmar">
             </div>
 			<div class="div-parrafo">
-        		 <p class="${claseProv}" id="parrafo">${mensajeProv}</p> 
+        		 <p class="${claseVent}" id="parrafo">${mensajeVent}</p> 
             </div>
         </div>
  </form>
