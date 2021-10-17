@@ -98,7 +98,6 @@ public class VentasImplementacion implements IVentaServicios{
 		Ventas venta = new Ventas();
 		
 		//Para el detalle Producto...
-		System.out.println(detalles);
 		//Recorremos la lista donde estan todos los detalles
 		for(DetalleProducto detalle : detalles) {
 			subtotal += detalle.getValor_subtotal();
@@ -130,4 +129,17 @@ public class VentasImplementacion implements IVentaServicios{
 		detalles.clear();
 	}
 
+	/*
+	@Override
+	public List<Ventas> ventasCliente(int cedula) {
+		List<Ventas> ventasCliente = new ArrayList<>();
+		
+		Iterable<Ventas> ventas = this.ventaDAO.ventaPorCliente(cedula);
+		
+		for(Ventas venta: ventas) {
+			ventasCliente.add(venta);
+		}
+		return ventasCliente;
+	}
+	*/
 }

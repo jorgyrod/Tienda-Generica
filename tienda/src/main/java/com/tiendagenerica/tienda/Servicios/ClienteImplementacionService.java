@@ -1,5 +1,7 @@
 package com.tiendagenerica.tienda.Servicios;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,7 @@ public class ClienteImplementacionService implements IClientesServicios{
 		if(!cliente.isPresent()) {
 			return null;
 		}
+		
 		return MHelpers.modelMapper().map(cliente.get(), Cliente.class);
 	}
 
@@ -62,6 +65,20 @@ public class ClienteImplementacionService implements IClientesServicios{
 	@Override
 	public void eliminar(int cedula) {
 		this.clienteDAO.deleteById(cedula);
+	}
+
+	@Override
+	public List<Cliente> listar() {
+		
+		List<Cliente> lista = new ArrayList<>();
+				
+		Iterable<Cliente> clienteObt = this.clienteDAO.findAll();
+		
+		for(Cliente cliente : clienteObt) {
+			lista.add(cliente);
+		}
+		
+		return lista;
 	}
 
 }

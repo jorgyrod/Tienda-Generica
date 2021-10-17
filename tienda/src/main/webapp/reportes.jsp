@@ -42,12 +42,14 @@
             <li class="nav__li"><a href="reportes.jsp"><i class="fas fa-list-alt"></i>Reportes</a></li>
         </ul>
     </nav>
-    <div class="form-container">
-        <div class="row align-items-center mt-4 text-center justify-content-center">
-	        	<div class="d-grid gap-2">
-	        		<a href="listadoUsuarios.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Listado de usuarios</a>
-				  	<a href="listadoClientes.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Listado de clientes</a>
-				  	<a href="ventasCliente.jsp" class="btn btn-lg btn-primary" role="button" aria-pressed="true">Ventas por cliente</a>
-				 </div>
-        </div>
+    <div class="form-container" >
+    	<form method="POST" action="./ReportesServlet">  	
+	        <div class="row align-items-center mt-4 text-center justify-content-center">
+		        	<div class="d-grid gap-2">
+		        		<input type="submit" class="btn btn-lg btn-primary" name="usuarios" value="Listado de usuarios">
+					  	<input type="submit" class="btn btn-lg btn-primary" role="button" aria-pressed="true" name="clientes" value="Listado de clientes">
+					  	<input type="submit" class="btn btn-lg btn-primary" role="button" aria-pressed="true" name="ventas" value="Ventas por cliente">
+					 </div>
+	        </div>
+        </form>
     </div>

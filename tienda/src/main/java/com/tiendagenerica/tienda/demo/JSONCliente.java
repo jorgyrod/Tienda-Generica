@@ -7,17 +7,60 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.tiendagenerica.tienda.Entidades.Cliente;
+import com.tiendagenerica.tienda.Entidades.Ventas;
 
 public class JSONCliente {
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
 
+	
+	
+	//Listar todos los clientes
+	public static ArrayList<Cliente> getJSONLista() throws IOException, ParseException{
+		url = new URL(sitio+"clientes/listar");
+		HttpURLConnection http = (HttpURLConnection)url.openConnection();
+		http.setRequestMethod("GET");
+		http.setRequestProperty("Accept", "application/json");
+		InputStream respuesta = http.getInputStream();
+		byte[] inp = respuesta.readAllBytes();
+		String json = "";
+		for (int i = 0; i<inp.length ; i++) {
+			json += (char)inp[i];
+		}
+		ArrayList<Cliente> lista = new ArrayList<Cliente>();
+		lista = parsingClientes(json);
+		http.disconnect();
+		return lista;
+	}
+	
+	public static ArrayList<Cliente> parsingClientes(String json) throws ParseException{
+		JSONParser jsonParser = new JSONParser();
+		ArrayList<Cliente> lista = new ArrayList<Cliente>();
+		JSONArray clientes = (JSONArray) jsonParser.parse(json);
+		Iterator i = clientes.iterator();
+		while (i.hasNext()) {
+			JSONObject innerObj = (JSONObject) i.next();
+			Cliente cliente = new Cliente();
+			
+			cliente.setCedula(Integer.parseInt(innerObj.get("cedula").toString()));
+			cliente.setNombre(innerObj.get("nombre").toString());
+			cliente.setDireccion(innerObj.get("direccion").toString());
+			cliente.setTelefono(Integer.parseInt(innerObj.get("telefono").toString()));
+			cliente.setEmail(innerObj.get("email").toString());
+			lista.add(cliente);
+		}
+		return lista;
+	}
 	
 	//Buscar cliente por cedula
 	//---------------------------------------
@@ -59,7 +102,37 @@ public class JSONCliente {
 			cliente.setTelefono(Integer.parseInt(innerObj.get("telefono").toString()));
 			cliente.setEmail(innerObj.get("email").toString());
 			
+			ArrayList<Ventas> listaVenta = new ArrayList<>();
+			//Llamamos a parsingVentasClientes para que nos traiga la lista de ventas
+			//que ha hecho el cliente
+			listaVenta = parsingVentasClientes(innerObj.get("ventas").toString());
+			//Enviamos esas ventas como lista para que podamos operar con ellas en el frontend(Calcular Total)
+			cliente.setVentas(listaVenta);
+			
+			
 			return cliente;
+	}
+	
+	//Este metodo esta enlazado con el de parsingCliente, ya que nos traera la lista de ventas
+	//que  tiene el cliente buscado
+	public static ArrayList<Ventas> parsingVentasClientes(String json) throws ParseException{
+		JSONParser jsonParser = new JSONParser();
+		ArrayList<Ventas> lista = new ArrayList<Ventas>();
+		JSONArray ventas = (JSONArray) jsonParser.parse(json);
+		Iterator i = ventas.iterator();
+		while (i.hasNext()) {
+			JSONObject innerObj = (JSONObject) i.next();
+			Ventas venta = new Ventas();
+			
+			//Enviamos los datos que necesitamos
+			venta.setCodigo_venta(Integer.parseInt(innerObj.get("codigo_venta").toString()));
+			venta.setIva_venta(Double.parseDouble(innerObj.get("iva_venta").toString()));
+			venta.setValor_venta(Double.parseDouble(innerObj.get("valor_venta").toString()));
+			venta.setValor_total(Double.parseDouble(innerObj.get("valor_total").toString()));
+
+			lista.add(venta);
+		}
+		return lista;
 	}
 		
 		// Crear Cliente

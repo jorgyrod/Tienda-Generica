@@ -53,7 +53,7 @@ public class ApiControllerCliente {
 		return ResponseEntity.ok(Boolean.TRUE);
 	}
 	
-	//Buscar usuario por id
+	//Buscar cliente por id
 	//(En este caso en vez de producir JSON)
 	//---------------------------
 	
@@ -62,7 +62,14 @@ public class ApiControllerCliente {
 		return ResponseEntity.ok(this.clienteService.buscarId(cedula));
 	}
 	
-	//Eliminar usuario
+	//Buscar todos los clientes
+	//---------------------------
+	@GetMapping(value = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> listarClientes(){
+		return ResponseEntity.ok(this.clienteService.listar());
+	}
+	
+	//Eliminar cliente
 	//---------------------------
 	
 	@DeleteMapping(value = "/eliminar/{cedula}")

@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="ventas")
 public class Ventas {
@@ -21,6 +23,14 @@ public class Ventas {
 	
 	@ManyToOne
 	@JoinColumn(name="ced_cliente", referencedColumnName="cedula_cli")
+	/*
+	 * @JsonBackReference
+	 * Esta anotacion nos permitira romper el ciclo que se genera siempre, cuando es una 
+	 * asociacion bidireccional, en esta caso Cliente - Ventas, si no se coloca
+	 * Se haran infinitas deserializaciones arrojando como resultado un error
+	 */
+	
+	@JsonBackReference
 	private Cliente cliente;
 	
 	//Referenciamos que es una relacion de muchos a uno
@@ -35,7 +45,6 @@ public class Ventas {
 	
 	@OneToMany(mappedBy="venta")
 	private List<DetalleProducto> detalleProductos;
-
 
 	public int getCodigo_venta() {
 		return codigo_venta;

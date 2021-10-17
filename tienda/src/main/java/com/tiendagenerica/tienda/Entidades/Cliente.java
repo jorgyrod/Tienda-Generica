@@ -27,6 +27,16 @@ public class Cliente {
 	@OneToMany(mappedBy="cliente")
 	private List<Ventas> ventas;
 	
+	
+	
+	public void setVentas(List<Ventas> ventas) {
+		this.ventas = ventas;
+	}
+
+	public List<Ventas> getVentas() {
+		return ventas;
+	}
+
 	public int getCedula() {
 		return cedula_cli;
 	}

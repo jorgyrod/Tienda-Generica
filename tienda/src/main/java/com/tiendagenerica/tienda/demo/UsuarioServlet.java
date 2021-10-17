@@ -196,20 +196,6 @@ public class UsuarioServlet extends HttpServlet {
 		}
 	}
 	
-	//Buscar todos los usuarios
-	//----------------------------------
-	public void listarUsuario(HttpServletRequest request, HttpServletResponse response){
-		try {
-			ArrayList<UsuarioDTO> lista = TestJSONUsuarios.getJSON();
-			String pagina ="/resultado.jsp";
-			request.setAttribute("lista", lista);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
-			dispatcher.forward(request, response);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	//Actualizar
 	//----------------------------------
 	public void actualizarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {

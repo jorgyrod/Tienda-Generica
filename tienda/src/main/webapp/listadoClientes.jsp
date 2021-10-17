@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page import='java.util.ArrayList'%>
+<%@ page import='com.tiendagenerica.tienda.Entidades.Cliente' %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -57,35 +59,20 @@
     </tr>
   </thead>
   <tbody>
+    <%
+  		ArrayList<Cliente> lista = (ArrayList<Cliente>) request.getAttribute("lista");
+  		for(Cliente cliente : lista){
+  	%>
     <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <th scope="row"><%=cliente.getCedula() %></th>
+      <td><%=cliente.getNombre() %></td>
+      <td><%=cliente.getEmail() %></td>
+      <td><%=cliente.getDireccion() %></td>
+      <td><%=cliente.getTelefono() %></td>
     </tr>
-    <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-  </tbody>
+    <%
+  		}
+    %>
 </table>
 <a href="reportes.jsp" class="btn btn-primary" role="button" aria-pressed="true">Volver</a>
         <iframe name="null" style="display:non;"></iframe><!-- mensajes-->

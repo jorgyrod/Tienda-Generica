@@ -24,7 +24,8 @@
 			/*
 				Recibimos el atributo "user" que enviamos en el Servlet
 			*/
-			UsuarioDTO usuario = (UsuarioDTO) request.getAttribute("user");
+			UsuarioDTO usuario = (UsuarioDTO) request.getAttribute("lista");
+			//for(UsuarioDTO usuario : lista){
 		%>
 			<tr>
 				<td><%=usuario.getCedula()%></td>

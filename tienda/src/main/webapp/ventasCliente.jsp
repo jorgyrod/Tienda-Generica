@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page import='java.util.ArrayList'%>
+<%@ page import='com.tiendagenerica.tienda.DTO.ClienteReporteDTO' %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -55,32 +57,24 @@
     </tr>
   </thead>
   <tbody>
+    <%
+  		ArrayList<ClienteReporteDTO> lista = (ArrayList<ClienteReporteDTO>) request.getAttribute("lista");
+  		for(ClienteReporteDTO cliente : lista){
+  	%>
     <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
+      <th scope="row"><%=cliente.getCedula() %></th>
+      <td><%=cliente.getNombre() %></td>
+      <td><%=cliente.getTotal() %></td>
     </tr>
-    <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
+    <%
+  		}
+    %>
   </tbody>
 </table>
 	<div class="input-group mb-3">
       <span class="input-group-text">Total ventas $</span>
       <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-      <span class="input-group-text">.00</span>
+      <span class="input-group-text">${total}</span>
     </div>
     <a href="reportes.jsp" class="btn btn-primary" role="button" aria-pressed="true">Volver</a>
         <iframe name="null" style="display:non;"></iframe><!-- mensajes-->
